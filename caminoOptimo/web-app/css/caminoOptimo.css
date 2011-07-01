@@ -1,0 +1,11 @@
+@import url("../css/main.css");
+@import url("../css/fuentes.css");
+@import url("../css/tablas.css");
+@import url("../css/listas.css");
+
+div.cuerpo{
+	margin-left: 10px;
+	width: 1020px;
+	min-height: 600px;
+}
+

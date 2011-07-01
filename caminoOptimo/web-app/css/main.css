@@ -1,0 +1,408 @@
+html * {
+    margin: 0;
+    /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX */
+}
+
+/* GENERAL */
+
+.spinner {
+    padding: 5px;
+    position: absolute;
+    right: 0;
+}
+
+
+#grailsLogo {
+	padding:0px;
+}
+
+a:link, a:visited {
+    color: #330066;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover{
+	color: #ff9000;
+}
+
+ul {
+    padding-left: 15px;
+}
+
+input, select, textarea {
+    background-color: #fcfcfc;
+    border: 1px solid #ccc;
+    font: 11px verdana, arial, helvetica, sans-serif;
+    margin: 2px 0;
+    padding: 2px 4px;
+}
+select {
+   padding: 2px 2px 2px 0;
+}
+textarea {
+	width: 250px;
+	height: 150px;
+	vertical-align: top;
+}
+
+input:focus, select:focus, textarea:focus {
+    border: 1px solid #b2d1ff;
+}
+
+.body {   
+    margin-left: 20px ;
+  
+}
+
+.pie{
+	clear:both;
+	border: 1px solid #8A93D3;
+	margin-top: 50px;
+	margin-left: 10px ;
+	width: 1020px; 
+		
+}
+
+/* NAVIGATION MENU */
+
+.nav {
+    border: 5px solid #FFA64D;
+    border-style: solid none solid none;
+    margin-top: 5px;
+    padding: 7px 12px;
+}
+
+.menuButton {
+    font-size: 10px;
+    padding: 0 5px;
+}
+.menuButton a {
+    color: #333;
+    padding: 4px 6px;
+}
+.menuButton a.home {
+    background: url(../images/skin/house.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}
+.menuButton a.list {
+    background: url(../images/skin/database_table.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}
+.menuButton a.create {
+    background: url(../images/skin/database_add.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}
+
+/* MESSAGES AND ERRORS */
+
+.message {
+    background: #f3f8fc url(../images/skin/information.png) 8px 50% no-repeat;
+    border: 1px solid #b2d1ff;
+    color: #006dba;
+    margin: 10px 0 5px 0;
+    padding: 5px 5px 5px 30px;
+    font-size: 15px;
+    
+}
+
+div.errors {
+    background: #fff3f3;
+    border: 1px solid red;
+    color: #cc0000;
+    margin: 10px 0 5px 0;
+    padding: 5px 0 5px 0;
+    font-size:15px;
+}
+div.errors ul {
+    list-style: none;
+    padding: 0;
+}
+div.errors li {
+	background: url(../images/skin/exclamation.png) 8px 0% no-repeat;
+    line-height: 16px;
+    padding-left: 30px;
+}
+
+td.errors select {
+    border: 1px solid red;
+}
+td.errors input {
+    border: 1px solid red;
+}
+
+
+
+
+/* PAGINATION */
+
+.paginateButtons {
+    border: 1px solid #ccc;
+    border-top: 0;
+    color: #666;
+    font-size: 10px;
+    overflow: hidden;
+    padding: 10px 3px;
+}
+.paginateButtons a {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-color: #ccc #aaa #aaa #ccc;
+    color: #666;
+    margin: 0 3px;
+    padding: 2px 6px;
+}
+.paginateButtons span {
+    padding: 2px 3px;
+}
+
+/* DIALOG */
+
+.dialog table {
+    padding: 5px 0;
+}
+
+.prop {
+    padding: 5px;
+}
+.prop .name {
+    display: inline-block;
+    width: 200px;
+    color:#081472;
+}
+.prop .value {
+    text-align: left;
+    width: 60%;
+}
+
+/* ACTION BUTTONS */
+
+.buttons {
+    border: 1px solid #ccc;
+    color: #666;
+    font-size: 10px;
+    margin-top: 5px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.buttons input {
+    background: #fff;
+    border: 0;
+    color: #333;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    margin-left: 3px;
+    overflow: visible;
+    padding: 2px 6px;
+}
+.buttons input.delete {
+    background: transparent url(../images/skin/database_delete.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+.buttons input.edit {
+    background: transparent url(../images/skin/database_edit.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+.buttons input.save {
+    background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+
+.menu {
+	float: left;
+	width: 195px;
+}
+
+.menu li {
+	
+}
+
+.menu .opcionMenu {
+	float: left;
+	width: 175px;
+	min-height: 20px;
+	height: auto ! important;
+	height: 20px;
+	color: #4d4d4d;
+	background: url(../images/ico_h1.gif) 0 1px no-repeat;
+	padding: 0 0 10px 25px;
+	font-size: 18px;
+}
+
+.menu li a {
+	text-decoration: none;
+	color: #4d4d4d;
+	background: none ! important;
+	font-weight: normal;
+	padding: 2px;
+}
+
+.menu li a:hover {
+	background: #325361 ! important;
+	color: #fff;
+}
+
+.actionList li a span {
+	
+}
+
+.menu h2{
+	margin-left: 40px;
+}
+
+p{
+	font-size: 20px;
+	margin-left: 20px;
+}
+
+.multiselect {
+		width: 460px;
+		height: 200px;
+		clear:both;
+	}
+	
+div.dialog{
+	background:#f7f7f7;
+	padding: 15px;
+	margin: 20px;
+	font-size: 15px;
+}
+
+
+/* root element for tabs  */
+.tabs { 
+	list-style:none; 
+	margin:0 !important; 
+	padding:0;
+	height:30px;
+	border:1px solid #666;	
+}
+
+/* single tab */
+.tabs li { 
+	float:left;	 
+	text-indent:0;
+	padding:0;
+	margin:0 !important;
+	list-style-image:none !important; 
+}
+
+/* link inside the tab. uses a background image */
+.tabs a { 
+	background: url(/img/global/tabs.png) no-repeat -652px 0;
+	font-size:11px;
+	display:block;
+	height: 30px;  
+	line-height:30px;
+	width: 111px;
+	text-align:center;	
+	text-decoration:none;
+	color:#000;
+	padding:0px;
+	margin:0px;	
+	position:relative;
+	top:1px;
+}
+
+.tabs a:active {
+	outline:none;		
+}
+
+/* when mouse enters the tab move the background image */
+.tabs a:hover {
+	background-position: -652px -31px;	
+	color:#fff;	
+}
+
+/* active tab uses a class name "current". it's highlight is also done by moving the background image. */
+.tabs .current, .tabs .current:hover, .tabs li.current a {
+	background-position: -652px -62px;		
+	cursor:default !important; 
+	color:#000 !important;
+}
+
+/* Different widths for tabs: use a class name: w1, w2, w3 or w2 */
+
+
+/* width 1 */
+.tabs .w1 			{ background-position: -519px 0; width:134px; }
+.tabs .w1:hover 	{ background-position: -519px -31px; }
+.tabs .w1.current { background-position: -519px -62px; }
+
+/* width 2 */
+.tabs .w2 			{ background-position: -366px -0px; width:154px; }
+.tabs .w2:hover 	{ background-position: -366px -31px; }
+.tabs .w2.current { background-position: -366px -62px; }
+
+
+/* width 3 */
+.tabs .w3 			{ background-position: -193px -0px; width:174px; }
+.tabs .w3:hover 	{ background-position: -193px -31px; }
+.tabs .w3.current { background-position: -193px -62px; }
+
+/* width 4 */
+.tabs .w4 			{ background-position: -0px -0px; width:194px; }
+.tabs .w4:hover 	{ background-position: -0px -31px; }
+.tabs .w4.current { background-position: -0px -62px; }
+
+
+/* initially all panes are hidden */ 
+.topologia .pane {
+	display:none;		
+}
+
+.conexiones{
+	width: 100%;
+}
+
+div.selectoresTopologia{
+	margin-top: 10px;	
+	background: #f7f7f7;
+	padding:10px;
+}
+
+
+div.selectoresTopologia div.selector{
+	float: left;	
+}
+
+div.selectoresTopologia label{
+	color: #081472;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+div.selectoresTopologia div.selector *{
+	display: block;
+}
+
+div.selectoresTopologia div.selector select{
+	min-width: 200px;
+}
+
+div.selectoresTopologia div.selector select,label,span{
+	margin-left: 10px;
+}
+
+div.selectoresTopologia div.selector span{
+	font-size: 15px;
+	margin-top: 5px;
+}
+
+div.selectoresTopologia div.selector input{
+	margin-top: 25px;
+}
+
+div.clearBoth{	
+	clear:both;
+}
+
+div.prop div{
+	float: left;
+}
+
