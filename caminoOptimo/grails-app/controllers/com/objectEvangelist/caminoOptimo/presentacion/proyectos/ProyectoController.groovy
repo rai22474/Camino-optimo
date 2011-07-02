@@ -69,8 +69,6 @@ class ProyectoController {
             redirect(action: "list")
         }
         else {
-			
-			println("------- El proyecto->" + params.id + "------------------------------------------------")
 			session.putAt('identificadorProyecto' ,params.id)
             render(view: "/diseno/disenoProyecto", model: [proyectoInstance: proyectoInstance]);		
         }

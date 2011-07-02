@@ -66,6 +66,6 @@ class TipoCable implements Serializable {
 	
 	static hibernateFilters = {
 		enabledFilter(condition:'enabled=1', default:true)
-		numeroPuntasParam(condition: ':numeropuntas = numeropuntas', types: 'integer')
+	
 	}
 }

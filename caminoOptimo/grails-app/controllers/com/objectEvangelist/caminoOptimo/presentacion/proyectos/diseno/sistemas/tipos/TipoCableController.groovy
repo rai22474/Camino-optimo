@@ -17,7 +17,6 @@ class TipoCableController {
     def index = {
         //redirect(action: "list", params: params)
 		
-		TipoCable.enableHibernateFilter('numeroPuntasParam').setParameter('numeropuntas', 2)
 				
 		render (view:'index', model:[members:TipoCable.list()])
     }

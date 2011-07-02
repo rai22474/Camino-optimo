@@ -3,10 +3,10 @@ import org.grails.plugin.hibernate.filter.HibernateFilterDomainConfiguration
 
 dataSource {
 	pooled = true
-	driverClassName = "org.hsqldb.jdbcDriver"
-	username = "sa"
-	password = ""
-	loggingSql = true
+    driverClassName = "org.h2.Driver"
+    username = "sa"
+    password = ""
+	
 	configClass = HibernateFilterDomainConfiguration.class
 }
 
@@ -20,19 +20,19 @@ environments {
 	development {
 		dataSource {
 			dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-			url = "jdbc:hsqldb:mem:devDB"
+			url = "jdbc:h2:mem:devDb"
 		}
 	}
 	test {
 		dataSource {
 			dbCreate = "update"
-			url = "jdbc:hsqldb:mem:testDb"
+			url = "jdbc:h2:mem:testDb"
 		}
 	}
 	production {
 		dataSource {
 			dbCreate = "update"
-			url = "jdbc:hsqldb:file:prodDb;shutdown=true"
+			url = "jdbc:h2:prodDb"
 		}
 	}
 }
