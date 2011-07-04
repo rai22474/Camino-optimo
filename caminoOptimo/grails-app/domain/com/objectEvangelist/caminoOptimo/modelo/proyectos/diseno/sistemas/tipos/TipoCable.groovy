@@ -14,7 +14,7 @@ class TipoCable implements Serializable {
 		descripcion(blank:true,size:3..100)
 		peso(nullable:false)
 		seccionExterior(nullable:false)
-		numeropuntas(nullable:false)
+		numeroPuntas(nullable:false)
 		seccionConductor(nullable:false)
     }
 	
@@ -42,7 +42,7 @@ class TipoCable implements Serializable {
     /**
      * El numero de puntas del tipo de cable.
      */
-    Integer numeropuntas
+    Integer numeroPuntas
 
     /**
      * Numero de cables.

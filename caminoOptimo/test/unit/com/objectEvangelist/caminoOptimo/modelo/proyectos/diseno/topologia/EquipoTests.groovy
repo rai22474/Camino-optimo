@@ -13,7 +13,7 @@ class EquipoTests extends GrailsUnitTestCase {
    /**
     * Metodo encargado probar que no ser permiten referencias no nulas.
     */
-	public void testReferenciaCableNoNula(){
+	public void testReferenciaEquipoNoNula(){
 		def equipo = new Equipo(referencia:null)
 		
 		mockForConstraintsTests(Equipo, [ equipo ])
@@ -25,7 +25,7 @@ class EquipoTests extends GrailsUnitTestCase {
 	/**
     * Metodo encargado probar que no se permiten referencias no nulas.
     */
-	public void testReferenciaCableNoVacia(){
+	public void testReferenciaEquipoNoVacia(){
 		def equipo = new Equipo(referencia:"")
 		
 		mockForConstraintsTests(Equipo, [ equipo ])

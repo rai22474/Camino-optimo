@@ -108,12 +108,12 @@ class CableTests extends GrailsUnitTestCase {
 	}
 	
 	/**
-	 * Método que calcula cuales son las rutas posibles de un cable.
+	 * Mï¿½todo que calcula cuales son las rutas posibles de un cable.
 	 */
 	public void testCalculaRutasPosibles(){
 	
 		def ruta = new Ruta()
-		def equipoOrigen = [calculaRutasPosibles: {[ruta]}] as Equipo
+		def equipoOrigen = [calculaRutasPosibles: {[ruta]}] as Equipo	
 		def equipoDestino = new Equipo(referencia:"Referencia")	
 		
 		def cable = new Cable(referencia:'referencia',

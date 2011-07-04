@@ -40,7 +40,7 @@ class CanalizacionCompuesta extends Canalizacion {
 		recuperaHijos(TipoConexion.ESTRUCTURA).each {componente->
 			def llenado = componente.calculaSeccionOcupada()
 			if ( llenado > llenadoCanalizacion){
-				llenadoCanalizacion = llenado 
+				llenadoCanalizacion = llenado
 			}			
 		}
 		
@@ -68,7 +68,7 @@ class CanalizacionCompuesta extends Canalizacion {
    BigDecimal longitud
       
    /**
-	* El diseño al que pertenece este equipo.
+	* El diseï¿½o al que pertenece este equipo.
 	*/
    Diseno diseno
 }

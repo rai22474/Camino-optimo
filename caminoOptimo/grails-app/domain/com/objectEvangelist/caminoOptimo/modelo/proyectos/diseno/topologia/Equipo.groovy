@@ -11,6 +11,10 @@ import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.Diseno;
  */
 class Equipo extends ElementoTopologia{
 
+	static constraints = {
+		referencia(nullable:false,blank:false,unique:true)
+	}
+	
 	/**
 	 * Devuelve un String con la referencia.
 	 */
@@ -40,7 +44,7 @@ class Equipo extends ElementoTopologia{
 	String ubicacion
 	
 	/**
-	 * El diseño al que pertenece este equipo.
+	 * El diseï¿½o al que pertenece este equipo.
 	 */
 	Diseno diseno
 }

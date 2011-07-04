@@ -49,11 +49,15 @@ class CanalizacionCompuestaTests extends GrailsUnitTestCase {
    */
    void testCalculaSeccionOcupada(){
 	   
-	   def primerElementoTopologia = [calculaLlenado:{8}] as Canalizacion
-	   def segundoElementoTopologia = [calculaLlenado:{4}] as Canalizacion
-	   def tercerElementoTopologia = [calculaLlenado:{2}] as Canalizacion
+	   def primerElementoTopologia = [calculaSeccionOcupada:{8}] as Canalizacion
+	   def segundoElementoTopologia = [calculaSeccionOcupada:{4}] as Canalizacion
+	   def tercerElementoTopologia = [calculaSeccionOcupada:{2}] as Canalizacion
 	   
-	   def canalizacionCompuesta = [recuperaHijos: {[primerElementoTopologia, segundoElementoTopologia,tercerElementoTopologia]}] as CanalizacionCompuesta
+	   def canalizacionCompuesta = new CanalizacionCompuesta(){			
+		   def recuperaHijos(tipoConexion){
+		   		return [primerElementoTopologia, segundoElementoTopologia,tercerElementoTopologia]
+		   }  
+	   } 
 	
 	   def llenadoCanalizacion = canalizacionCompuesta.calculaSeccionOcupada()
 	   
