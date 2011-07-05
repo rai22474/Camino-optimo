@@ -81,7 +81,7 @@ class BootStrap {
 		descripcion:"El tipo de cable",
 		peso:1,
 		seccionExterior:10,
-		numeropuntas:3,
+		numeroPuntas:3,
 		seccionConductor:1,
 		numeroCables:2,
 		enabled:true)
@@ -92,7 +92,7 @@ class BootStrap {
 			descripcion:"El tipo de cable segundo",
 			peso:1,
 			seccionExterior:10,
-			numeropuntas:2,
+			numeroPuntas:2,
 			seccionConductor:1,
 			numeroCables:3,
 			enabled:true)
