@@ -1,5 +1,7 @@
 package com.objectEvangelist.caminoOptimo.modelo.proyectos
 
+import grails.clojure.ClojureProxy;
+
 import  com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.*
 
 /**
@@ -66,5 +68,9 @@ class Proyecto implements Serializable {
 		}
 		
 		return true;
+	}
+	
+	def sumarNumeros(x,y){
+		clj.add_numbers(x, y)		
 	}
 }

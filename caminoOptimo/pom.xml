@@ -239,6 +239,19 @@
 		<artifactId>spring-security-web</artifactId>
 		<version>3.0.4.RELEASE</version>
 	</dependency>
+	
+	<dependency>
+   		<groupId>org.clojure</groupId>
+   		<artifactId>clojure</artifactId>
+   		<version>1.2.0</version>
+ 	</dependency>
+ 	
+ 	<dependency>
+   		<groupId>org.clojure</groupId>
+   		<artifactId>clojure-contrib</artifactId>
+   		<version>1.2.0</version>
+ 	</dependency>
+
 
   </dependencies>
   

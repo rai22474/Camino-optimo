@@ -68,6 +68,7 @@ class BootStrap {
 		proyecto.getDiseno().setPorcentajeMaximoLlenadoBandejas(40)
 		proyecto.getDiseno().setPorcentajeMaximoLlenadoConductos(30)
 		
+		println proyecto.sumarNumeros(6, 3)
 		salvaEntidad(proyecto)
 		return proyecto		
 	}

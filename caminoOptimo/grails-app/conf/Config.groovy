@@ -94,3 +94,4 @@ log4j = {
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.objectEvangelist.caminoOptimo.seguridad.Usuario'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.objectEvangelist.caminoOptimo.seguridad.UsuarioRol'
 grails.plugins.springsecurity.authority.className = 'com.objectEvangelist.caminoOptimo.seguridad.Rol'
+grails.clojure.dynamicPropertyName = 'clojurePropertyName'

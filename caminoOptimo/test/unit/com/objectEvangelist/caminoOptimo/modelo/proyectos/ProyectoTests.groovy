@@ -1,7 +1,9 @@
 package com.objectEvangelist.caminoOptimo.modelo.proyectos
 
+
 import grails.test.*
-import nl.jqno.equalsverifier.*
+import clojure.lang.Compiler
+
 
 /**
  * Clase que prueba la entidad de dominio que representa un proyecto.
@@ -9,6 +11,7 @@ import nl.jqno.equalsverifier.*
  */
 class ProyectoTests extends GrailsUnitTestCase {
     
+		
     /**
      * Prueba que un proyecto no puede tener un código nulo.
      */
@@ -79,5 +82,28 @@ class ProyectoTests extends GrailsUnitTestCase {
 	 */
 	public void testEquals(){
 			
+	}
+	
+	/**
+	 * Prueba el metodo que sirve para sumar.
+	 */
+	public void testSumar(){
+		
+		//Cargo y compilo la clase de clojure 
+		new File('.//src//clj//demo.clj').withReader {
+			reader ->Compiler.load reader  
+		}
+		
+		//Creo el proxy y lo añado como propiedad dinamica a la clase
+		def proxy = new grails.clojure.ClojureProxy()
+		Proyecto.metaClass*."getClj" = {
+			return proxy
+		}
+		
+		//Creo el objeto de prueba
+		def proyecto = new Proyecto()
+				
+		//Ejecuto la prueba
+		assertTrue 'Debe sumar 3', proyecto.sumarNumeros(1, 2).equals(3)
 	}
 }
