@@ -3,7 +3,7 @@ package com.objectEvangelist.caminoOptimo.modelo.proyectos
 
 import grails.test.*
 import clojure.lang.Compiler
-
+import com.gargoylesoftware.base.testing.*
 
 /**
  * Clase que prueba la entidad de dominio que representa un proyecto.
@@ -81,7 +81,19 @@ class ProyectoTests extends GrailsUnitTestCase {
 	 *  Testea el equals y el hascode de las clase.
 	 */
 	public void testEquals(){
-			
+		
+		def proyectoOriginal = new Proyecto(codigo:'001',
+			descripcion:'La descripcion')
+		
+		def proyectoCampoIguales = new Proyecto(codigo:'001',
+			descripcion:'La descripcion no participa')
+		
+		def proyectoDistintos = new Proyecto(codigo:'002',
+			descripcion:'La descripcion no participa')
+		
+		def objetoDistinto = new Object()
+		
+		new EqualsTester(proyectoOriginal,proyectoCampoIguales,proyectoDistintos,objetoDistinto)	
 	}
 	
 	/**

@@ -40,14 +40,21 @@ class Proyecto implements Serializable {
 		return "$codigo"
 	}
 		
+	
+	/** 
+	 * El hashcode se hace por codigo igual por equals.
+	 */
 	@Override
 	public int hashCode() {
 		final prime = 31
-		result = 1
+		def result = 1
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode())
 		return result;
 	}
 	
+	/**
+	 * Dos proyectos serán iguales solo si sus condogos son iguales.
+	 */
 	@Override
 	public boolean equals(Object other) {
 		
