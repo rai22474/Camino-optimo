@@ -34,7 +34,9 @@ class Proyecto implements Serializable {
 	 */
 	String descripcion
 	
-		
+	/**	
+	 * Metodo que muestra la información en string, en este caso el código.
+	 */
 	@Override
 	def String toString(){
 		return "$codigo"
@@ -77,6 +79,9 @@ class Proyecto implements Serializable {
 		return true;
 	}
 	
+	/**
+	 * Funcion que es un prueba de clojure. 
+	 */
 	def sumarNumeros(x,y){
 		clj.add_numbers(x, y)		
 	}

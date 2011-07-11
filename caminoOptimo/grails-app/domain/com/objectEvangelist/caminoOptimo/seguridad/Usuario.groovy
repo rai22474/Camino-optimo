@@ -1,6 +1,10 @@
 package com.objectEvangelist.caminoOptimo.seguridad
 
 
+/**
+ * Cada uno de los usuarios que utiliza la aplicación.
+ *
+ */
 class Usuario {
 
 	String username

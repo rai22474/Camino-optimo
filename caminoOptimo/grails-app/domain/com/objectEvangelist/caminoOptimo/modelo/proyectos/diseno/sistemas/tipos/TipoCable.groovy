@@ -57,15 +57,44 @@ class TipoCable implements Serializable {
 	/**
 	* 	@see java.lang.Object#toString()
 	*/
-   @Override
-   def String toString(){
-	   "$referencia"
-   }
-		
-	Boolean enabled
-	
-	static hibernateFilters = {
-		enabledFilter(condition:'enabled=1', default:true)
-	
+	@Override
+	def String toString(){
+		"$referencia"
 	}
+	/**
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31
+		int result = 1
+		result = prime * result	+ ((referencia == null) ? 0 : referencia.hashCode())
+		return result
+	}
+	
+	/**
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj == null) {
+			return false
+		}
+		
+		if (!(obj instanceof TipoCable)) {
+			return false
+		}
+		
+		if (referencia == null) {
+			if (obj.referencia != null) {
+				return false
+			}
+		} else if (!referencia.equals(obj.referencia)) {
+			return false
+		}
+		
+		return true
+	}
+   
 }

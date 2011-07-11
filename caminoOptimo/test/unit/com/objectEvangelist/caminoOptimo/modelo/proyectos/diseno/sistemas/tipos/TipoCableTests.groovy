@@ -1,6 +1,8 @@
 package com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos
 
 
+import com.gargoylesoftware.base.testing.EqualsTester;
+
 import grails.test.*
 
 /**
@@ -98,5 +100,22 @@ class TipoCableTests extends GrailsUnitTestCase {
     void testToString(){
 		def tipoCable = new TipoCable(referencia:"12345")
 		assertEquals 'No es la descripcion esperada',"12345", tipoCable.toString()			
+	}
+	
+	/**
+	 * Metodo que prueba los equals.
+	 */
+	void testEquals(){
+	
+		TipoCable tipoCable = new TipoCable(referencia:'12345')
+		TipoCable tipoCableIgual = new TipoCable(referencia:'12345')
+		TipoCable tipoCableDistinto = new TipoCable(referencia:'23212')
+		Object objetoDistinto = new Object()
+		
+		new EqualsTester(tipoCable,
+			tipoCableIgual,
+			tipoCableDistinto,
+			objetoDistinto) 
+		
 	}
 }

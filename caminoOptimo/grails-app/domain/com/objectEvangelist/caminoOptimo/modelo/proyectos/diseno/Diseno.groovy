@@ -9,7 +9,7 @@ import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.tipos
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.*
 
 /**
- * El diseno es la definici�n de los elementos que forman el sistema de cableado.
+ * El diseno es la definición de los elementos que forman el sistema de cableado.
  */
 class Diseno {
 
@@ -25,10 +25,22 @@ class Diseno {
 					  sistemas:Sistema,
 					  canalizaciones:CanalizacionCompuesta]
 
+	
 	/**
 	 * Relaciones.
 	 */
 	static belongsTo = [Proyecto]
+	
+	/**
+	* El porcentaje maximo de llenado de las bandejas
+	*/
+	BigDecimal porcentajeMaximoLlenadoBandejas = 0
+   
+	/**
+	* El porcentaje maximo de llenado de los conductos
+	*/
+	BigDecimal porcentajeMaximoLlenadoConductos = 0
+   
 		
 	/**
 	 * Metodo que añade un nueva canalizacion al diseño.
@@ -46,16 +58,5 @@ class Diseno {
 		addToTiposCanalizacion(tipoCanal)
 		tipoCanal.setDiseno(this)
 	}
-	
-	/**
-	 * El porcentaje maximo de llenado de las bandejas
-	 */
-	BigDecimal porcentajeMaximoLlenadoBandejas = 0
-	
-	/**
-	 * El porcentaje maximo de llenado de los conductos
-	 */
-	BigDecimal porcentajeMaximoLlenadoConductos = 0
-	
-	
+
 }
