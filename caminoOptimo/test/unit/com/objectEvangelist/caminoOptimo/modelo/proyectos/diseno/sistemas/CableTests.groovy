@@ -1,6 +1,7 @@
 package com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas
 
 import grails.test.*
+import com.gargoylesoftware.base.testing.EqualsTester
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.*
 
 class CableTests extends GrailsUnitTestCase {
@@ -108,7 +109,7 @@ class CableTests extends GrailsUnitTestCase {
 	}
 	
 	/**
-	 * M�todo que calcula cuales son las rutas posibles de un cable.
+	 * Método que consulta las rutas posibles para un cable.
 	 */
 	public void testCalculaRutasPosibles(){
 	
@@ -123,7 +124,22 @@ class CableTests extends GrailsUnitTestCase {
 		def rutas = cable.calculaRutasPosibles()
 		
 		assertNotNull 'Debe devolver rutas', rutas
-		assertTrue 'La lista debe tener una ruta', rutas.size() == 1
-		
+		assertTrue 'La lista debe tener una ruta', rutas.size() == 1		
+	}
+	
+	/**
+	 * Test del metodo equals.
+	 */
+	def void testEquals(){
+		def cableOriginal = new Cable(referencia:"Referencia")
+		def cableIgual = new Cable(referencia:"Referencia")
+		def cableDistinto = new Cable(referencia:"Referecia distinta")
+		def objetoDistino = new Object()
+
+		new EqualsTester(cableOriginal,
+			 cableIgual,
+			 cableDistinto,
+			 objetoDistino)
+				
 	}
 }

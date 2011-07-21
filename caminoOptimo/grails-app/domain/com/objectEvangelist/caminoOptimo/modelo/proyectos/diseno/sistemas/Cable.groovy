@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.*
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.*
-import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.Ruta
 
 /**
  * Cada uno de los cables que forma un sistema, da servicio a cada uno de los equipos.
@@ -21,6 +20,8 @@ class Cable implements Serializable{
 		ruta(nullable:true)
 	}
 		
+	
+	
 	/**
 	 * Metodo que modifica la ruta del cable con la nueva informacion de canalizaciones.
 	 */
@@ -56,6 +57,40 @@ class Cable implements Serializable{
 		"$referencia"
 	}
 	
+	/** 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31
+		int result = 1
+		return prime * result
+				+ ((referencia == null) ? 0 : referencia.hashCode())
+	}
+
+	/**
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj == null) {
+			return false
+		}
+		if (!(obj instanceof Cable)) {
+			return false
+		}
+	
+		if (referencia == null) {
+			if (obj.referencia != null) {
+				return false
+			}
+		} else if (!referencia.equals(obj.referencia)) {
+			return false
+		}
+		return true
+	}
+
 	/**
 	 * La referencia del cable.
 	 */
