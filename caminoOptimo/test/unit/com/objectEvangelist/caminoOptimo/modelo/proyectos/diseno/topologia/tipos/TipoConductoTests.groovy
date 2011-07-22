@@ -1,5 +1,6 @@
 package com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.tipos
 
+import com.gargoylesoftware.base.testing.EqualsTester
 import grails.test.*
 
 /**
@@ -62,4 +63,22 @@ class TipoConductoTests extends GrailsUnitTestCase {
 		def tipoConducto = new TipoConducto(referencia:"12345")
 		assertEquals 'No es la descripcion esperada',"12345", tipoConducto.toString()			
 	}
+	
+	/**
+	* Prueba el equals del tipo canal.
+	*/
+   public void testEquals(){
+	   
+	   def tipoConductoOriginal = new TipoConducto(referencia:"referencia")
+	   def tipoConductoIgual = new TipoConducto(referencia:"referencia")
+	   def tipoConductoDistinto = new TipoConducto(referencia:"referenciaDistinta")
+	   def objetoDistinto = new Object()
+	   
+	   
+	   new EqualsTester(tipoConductoOriginal,
+		   tipoConductoIgual,
+		   tipoConductoDistinto,
+		   objetoDistinto)
+	   
+   }
 }

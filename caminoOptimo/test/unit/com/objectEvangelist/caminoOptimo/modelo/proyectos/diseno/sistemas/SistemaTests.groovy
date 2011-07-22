@@ -1,6 +1,7 @@
 package com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas
 
 
+import com.gargoylesoftware.base.testing.EqualsTester
 import grails.test.*
 
 /**
@@ -71,8 +72,26 @@ class SistemaTests extends GrailsUnitTestCase {
 	/**
      * Prueba el metodo toString
      */
-    void testToString(){
+    public void testToString(){
 		def sistema = new Sistema(referencia:"12345")
 		assertEquals 'No es la descripcion esperada',"12345", sistema.toString()			
+	}
+	
+	/**
+	 * Prueba el equals del sistema. 
+	 */
+	public void testEquals(){
+		
+		def sistemaOriginal = new Sistema(referencia:"referencia")
+		def sistemaIgual = new Sistema(referencia:"referencia")
+		def sistemaDistinto = new Sistema(referencia:"referenciaDistinta")
+		def objetoDistinto = new Object()
+		
+		
+		new EqualsTester(sistemaOriginal,
+			sistemaIgual,
+			sistemaDistinto,
+			objetoDistinto)
+		
 	}
 }

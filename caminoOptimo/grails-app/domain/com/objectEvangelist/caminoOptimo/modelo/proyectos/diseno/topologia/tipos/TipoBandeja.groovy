@@ -21,13 +21,7 @@ class TipoBandeja extends TipoCanal {
 		peso(nullable:false)
     }
 	
-	/**
-	 * 	@see java.lang.Object#toString()
-	 */
-	@Override
-	public def String toString(){
-		"$referencia"
-	}
+	
 	
 	/**
      * El ancho de la bandeja.
@@ -43,4 +37,45 @@ class TipoBandeja extends TipoCanal {
      * El peso de la bandeja.
      */
     BigInteger peso	
+	
+	/**
+	 * 	@see java.lang.Object#toString()
+	 */
+	@Override
+	public def String toString(){
+		"$referencia"
+	}
+
+	/**
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		def result = 1;
+		return prime * result + ((referencia == null) ? 0 : referencia.hashCode())
+	}
+
+	/**
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+
+		if (obj == null) {
+			return false
+		}
+		if (!(obj instanceof TipoBandeja)) {
+			return false
+		}
+
+		if (referencia == null) {
+			if (obj.referencia != null) {
+				return false
+			}
+		} else if (!referencia.equals(obj.referencia)) {
+			return false
+		}
+		return true;
+	}
 }

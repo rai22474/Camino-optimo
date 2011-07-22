@@ -1,5 +1,6 @@
 package com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.tipos
 
+import com.gargoylesoftware.base.testing.EqualsTester
 import grails.test.*
 
 /**
@@ -86,4 +87,22 @@ class TipoBandejaTests extends GrailsUnitTestCase {
 		def tipoBandeja = new TipoBandeja(referencia:"12345")
 		assertEquals 'No es la descripcion esperada',"12345", tipoBandeja.toString()			
 	}
+	
+	/**
+	* Prueba el equals del tipo bandeja.
+	*/
+   public void testEquals(){
+	   
+	   def tipoBandejaOriginal = new TipoBandeja(referencia:"referencia")
+	   def tipoBandejaIgual = new TipoBandeja(referencia:"referencia")
+	   def tipoBandejaDistinto = new TipoBandeja(referencia:"referenciaDistinta")
+	   def objetoDistinto = new Object()
+	   
+	   
+	   new EqualsTester(tipoBandejaOriginal,
+		   tipoBandejaIgual,
+		   tipoBandejaDistinto,
+		   objetoDistinto)
+	   
+   }
 }
