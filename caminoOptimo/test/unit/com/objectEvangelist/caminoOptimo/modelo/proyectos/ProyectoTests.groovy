@@ -108,7 +108,7 @@ class ProyectoTests extends GrailsUnitTestCase {
 		
 		//Creo el proxy y lo añado como propiedad dinamica a la clase
 		def proxy = new grails.clojure.ClojureProxy()
-		Proyecto.metaClass*."getClj" = {
+		Proyecto.metaClass*."getClojurePropertyName" = {
 			return proxy
 		}
 		

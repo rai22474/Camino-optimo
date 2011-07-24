@@ -32,18 +32,18 @@ class BootStrap {
 		def redes = crearTipoRedes()
 		def equipos = creaEquipo(proyecto.getDiseno())
 		
-		/*def sistema = creaSistema(redes[0])
+		def sistema = creaSistema(redes[0])
 		
 		creaCable(tipoCable,redes[0],sistema,equipos[0],equipos[3])
 		
-		def tipoBandeja = creaTipoBandeja()		 
-		def bandejas = creaBandejas(tipoBandeja,redes)
+		def tipoBandeja = creaTipoBandeja(proyecto.getDiseno())		 
+		def bandejas = creaBandejas(tipoBandeja,redes,proyecto.getId())
 		
 		
-		def tipoConducto = creaTipoConducto()
-		def conductos = creaConductos(tipoConducto,redes)			
+		def tipoConducto = creaTipoConducto(proyecto.getDiseno())
+		def conductos = creaConductos(tipoConducto,redes,proyecto.getId())			
 		
-		creaTopologia(bandejas,conductos,equipos)*/
+		creaTopologia(bandejas,conductos,equipos)
 		 
 	}
 	
@@ -68,7 +68,6 @@ class BootStrap {
 		proyecto.getDiseno().setPorcentajeMaximoLlenadoBandejas(40)
 		proyecto.getDiseno().setPorcentajeMaximoLlenadoConductos(30)
 		
-		println proyecto.sumarNumeros(6, 3)
 		salvaEntidad(proyecto)
 		return proyecto		
 	}
@@ -154,9 +153,8 @@ class BootStrap {
 			salvaEntidad(equipo)
 			equipos.add(equipo)
 		}
+	
 		return equipos
-		
-		
 	}
 	
 	/**
@@ -188,12 +186,13 @@ class BootStrap {
 	/**
 	 * Crea un tipo de bandeja.
 	 */
-	private def creaTipoBandeja(){
+	private def creaTipoBandeja(diseno){
 		def tipoBandeja = new TipoBandeja(referencia:"CA-001",
 			descripcion:"bandeja muy bonita",
 			peso:10,
 			ancho:10,
-			alto:10);
+			alto:10,
+			diseno:diseno);
 		salvaEntidad(tipoBandeja)
 		return tipoBandeja
 	}
@@ -201,16 +200,17 @@ class BootStrap {
 	/**
 	 * Crea un tipo de bandeja.
 	 */
-	private def creaTipoConducto(){
+	private def creaTipoConducto(diseno){
 		def tipoConducto = new TipoConducto(referencia:"GA-001",
 			diametroInterior:10,
 			diametroNominal:10,
-			descripcion:'Descripcion')
+			descripcion:'Descripcion',
+			diseno:diseno)
 		salvaEntidad(tipoConducto)
 		return tipoConducto
 	}
 	
-	private def creaBandejas(tipoBandeja,redes){
+	private def creaBandejas(tipoBandeja,redes,identificadorProyecto){
 		
 		def bandejas = []
 		def bandejaFactory = new BandejaFactory()
@@ -222,7 +222,7 @@ class BootStrap {
 					red:red,
 					tipoCanal:tipoBandeja,
 					descripcion:"descripcion",
-					ubicacion:"Al este"])
+					ubicacion:"Al este"],identificadorProyecto)
 						
 				salvaEntidad(bandeja)
 				bandejas.add(bandeja)
@@ -231,7 +231,7 @@ class BootStrap {
 		return bandejas
 	}
 	
-	private def creaConductos(tipoConducto,redes){
+	private def creaConductos(tipoConducto,redes,identificadorProyecto){
 		
 		def conductos = []
 		def conductoFactory = new ConductoFactory()
@@ -243,7 +243,7 @@ class BootStrap {
 										  red:red,
 										  descripcion:"Descripcion conducto",
 										  ubicacion:"Al este",
-									  	  longitud:100])
+									  	  longitud:100],identificadorProyecto)
 				
 				salvaEntidad(conducto)
 			}

@@ -83,6 +83,6 @@ class Proyecto implements Serializable {
 	 * Funcion que es un prueba de clojure. 
 	 */
 	def sumarNumeros(x,y){
-		clj.add_numbers(x, y)		
+		clojurePropertyName.add_numbers(x, y)		
 	}
 }
