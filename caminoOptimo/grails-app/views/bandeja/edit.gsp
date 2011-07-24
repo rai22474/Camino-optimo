@@ -46,7 +46,7 @@
                                   <label for="red"><g:message code="bandeja.red.label" default="Red" /></label>
                                 </div>
                                 <div   class="value ${hasErrors(bean: bandejaInstance, field: 'red', 'errors')}">
-                                    <g:select name="red.id" from="${com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.TipoRed.list()}" optionKey="id" value="${bandejaInstance?.red?.id}"  />
+                                    <g:select name="red.id" from="${tiposRed}" optionKey="id" value="${bandejaInstance?.red?.id}"  />
                                 </div>
                             </div>
                         
@@ -82,7 +82,7 @@
                                   <label for="tipoCanal"><g:message code="bandeja.tipoCanal.label" default="Tipo Canal" /></label>
                                 </div>
                                 <div   class="value ${hasErrors(bean: bandejaInstance, field: 'tipoCanal', 'errors')}">
-                                    <g:select name="tipoCanal.id" from="${com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.tipos.TipoCanal.list()}" optionKey="id" value="${bandejaInstance?.tipoCanal?.id}"  />
+                                    <g:select name="tipoCanal.id" from="${tiposBandeja}" optionKey="id" value="${bandejaInstance?.tipoCanal?.id}"  />
                                 </div>
                             </div>
                         

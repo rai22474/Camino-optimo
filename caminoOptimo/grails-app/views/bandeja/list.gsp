@@ -21,17 +21,9 @@
             </g:if>
             
             <div class="list">
-            	<div class="buttons">
-	                <g:form>
-	                    <g:hiddenField name="id" value="" />
-	                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit') }" onclick="var seleccionado = fnGetSelected();document.forms[0].id.value = seleccionado;"/></span>
-	                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
-	                </g:form>
-                </div>
-                <table class="dataTable">
+                 <table class="dataTable">
                     <thead>
-                        <tr>
-                        
+                        <tr>                       
                             <g:sortableColumn property="referencia" title="${message(code: 'bandeja.referencia.label', default: 'Referencia')}" />
                         
                             <th><g:message code="bandeja.red.label" default="Red" /></th>

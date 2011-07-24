@@ -2,6 +2,7 @@ package com.objectEvangelist.caminoOptimo.presentacion.proyectos.diseno.topologi
 
 
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.*;
+import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.tipos.TipoBandeja;
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.Proyecto
 
 /**
@@ -33,7 +34,12 @@ class BandejaController {
     def create = {
         def bandejaInstance = new Bandeja() 
         bandejaInstance.properties = params
-        return [bandejaInstance: bandejaInstance]
+		
+		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))		
+		def tiposRed = proyecto.getDiseno().getTiposRed()
+		def tiposBandeja = TipoBandeja.findAllByDiseno(proyecto.getDiseno())
+		
+        return [bandejaInstance: bandejaInstance,tiposRed:tiposRed,tiposBandeja:tiposBandeja]
     }
 
     def save = {
@@ -67,7 +73,11 @@ class BandejaController {
             redirect(action: "list")
         }
         else {
-            return [bandejaInstance: bandejaInstance]
+			def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
+			def tiposRed = proyecto.getDiseno().getTiposRed()
+			def tiposBandeja = TipoBandeja.findAllByDiseno(proyecto.getDiseno())
+			
+            return [bandejaInstance: bandejaInstance,tiposRed:tiposRed, tiposBandeja:tiposBandeja]
         }
     }
 
