@@ -24,24 +24,19 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="referencia" title="${message(code: 'sistema.referencia.label', default: 'Referencia')}" />
-                        
-                            <g:sortableColumn property="nombre" title="${message(code: 'sistema.nombre.label', default: 'Nombre')}" />
-                        
+                            <g:sortableColumn property="referencia" title="${message(code: 'sistema.referencia.label', default: 'Referencia')}" />                      
+							<g:sortableColumn property="red" title="${message(code: 'sistema.red.label', default: 'Red')}" />			
+                            <g:sortableColumn property="nombre" title="${message(code: 'sistema.nombre.label', default: 'Nombre')}" />                 
                             <g:sortableColumn property="descripcion" title="${message(code: 'sistema.descripcion.label', default: 'Descripcion')}" />
-                        
                         </tr>
                     </thead>
                     <tbody>
                     <g:each in="${sistemaInstanceList}" status="i" var="sistemaInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">                       
                             <td><g:link action="show" id="${sistemaInstance.id}">${fieldValue(bean: sistemaInstance, field: "referencia")}</g:link></td>
-                                                
+                          	<td>${fieldValue(bean: sistemaInstance, field: "red")}</td>
                             <td>${fieldValue(bean: sistemaInstance, field: "nombre")}</td>
-                        
                             <td>${fieldValue(bean: sistemaInstance, field: "descripcion")}</td>
-                        
                         </tr>
                     </g:each>
                     </tbody>

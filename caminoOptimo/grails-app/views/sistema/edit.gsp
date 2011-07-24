@@ -58,6 +58,15 @@
                                     <g:textArea name="descripcion" value="${sistemaInstance?.descripcion}" />
                                 </div>
                             </div>
+                            
+                             <div class="prop">
+                                <div  class="name">
+                                    <label for="red"><g:message code="cable.red.label" default="Red" /></label>
+                                </div>
+                                <div  class="value ${hasErrors(bean: cableInstance, field: 'red', 'errors')}">
+                                    <g:select name="red.id" from="${tiposRed}" optionKey="id" value="${sistemaInstance?.red?.id}"  />
+                                </div>
+                            </div>
                         
                         </div>
                     </div>

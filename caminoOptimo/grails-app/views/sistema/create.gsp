@@ -60,7 +60,7 @@
                                     <label for="red"><g:message code="cable.red.label" default="Red" /></label>
                                 </div>
                                 <div  class="value ${hasErrors(bean: cableInstance, field: 'red', 'errors')}">
-                                    <g:select name="red.id" from="${com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.TipoRed.list()}" optionKey="id" value="${sistemaInstance?.red?.id}"  />
+                                    <g:select name="red.id" from="${tiposRed}" optionKey="id" value="${sistemaInstance?.red?.id}"  />
                                 </div>
                             </div>
                         

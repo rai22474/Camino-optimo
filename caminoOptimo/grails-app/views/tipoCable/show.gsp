@@ -1,5 +1,6 @@
-
 <%@ page import="com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.TipoCable" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -10,6 +11,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
+            <span class="menuButton"><g:link class="list" controller="diseno" action="disenoProyecto">Diseño proyecto</g:link></span>            
             <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
@@ -21,65 +23,41 @@
             <div class="dialog">
                 <div>
                     <div>
-                    
-                        <div class="prop">
-                            <div class="name"><g:message code="tipoCable.id.label" default="Id" /></div>
-                            
-                            <div  class="value">${fieldValue(bean: tipoCableInstance, field: "id")}</div>
-                            
-                        </div>
-                    
                         <div class="prop">
                             <div class="name"><g:message code="tipoCable.referencia.label" default="Referencia" /></div>
-                            
                             <div  class="value">${fieldValue(bean: tipoCableInstance, field: "referencia")}</div>
-                            
                         </div>
                     
                         <div class="prop">
                             <div class="name"><g:message code="tipoCable.descripcion.label" default="Descripcion" /></div>
-                            
                             <div  class="value">${fieldValue(bean: tipoCableInstance, field: "descripcion")}</div>
-                            
                         </div>
                     
                         <div class="prop">
                             <div class="name"><g:message code="tipoCable.peso.label" default="Peso" /></div>
-                            
                             <div  class="value">${fieldValue(bean: tipoCableInstance, field: "peso")}</div>
-                            
                         </div>
                     
                         <div class="prop">
                             <div class="name"><g:message code="tipoCable.seccionExterior.label" default="Seccion Exterior" /></div>
-                            
                             <div  class="value">${fieldValue(bean: tipoCableInstance, field: "seccionExterior")}</div>
-                            
                         </div>
                     
                         <div class="prop">
                             <div class="name"><g:message code="tipoCable.numeroPuntas.label" default="Numero Puntas" /></div>
-                            
                             <div  class="value">${fieldValue(bean: tipoCableInstance, field: "numeroPuntas")}</div>
-                            
                         </div>
                     
                         <div class="prop">
                             <div class="name"><g:message code="tipoCable.seccionConductor.label" default="Seccion Conductor" /></div>
-                            
                             <div  class="value">${fieldValue(bean: tipoCableInstance, field: "seccionConductor")}</div>
-                            
                         </div>
                     
                         <div class="prop">
                             <div class="name"><g:message code="tipoCable.numeroCables.label" default="Numero Cables" /></div>
-                            
                             <div  class="value">${fieldValue(bean: tipoCableInstance, field: "numeroCables")}</div>
-                            
                         </div>
-                       
                     </div>
-                 
                 </div>
               	<div class="clearBoth"></div>  
             </div>

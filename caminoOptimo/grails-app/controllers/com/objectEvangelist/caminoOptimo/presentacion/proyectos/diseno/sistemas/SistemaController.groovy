@@ -28,7 +28,10 @@ class SistemaController {
     def create = {
         def sistemaInstance = new Sistema()
         sistemaInstance.properties = params
-        return [sistemaInstance: sistemaInstance]
+        
+		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
+				
+		return [sistemaInstance: sistemaInstance,tiposRed:proyecto.getDiseno().getTiposRed()]
     }
 
     def save = {
@@ -62,7 +65,9 @@ class SistemaController {
             redirect(action: "list")
         }
         else {
-            return [sistemaInstance: sistemaInstance]
+			def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
+			
+            return [sistemaInstance: sistemaInstance,tiposRed:proyecto.getDiseno().getTiposRed()]
         }
     }
 

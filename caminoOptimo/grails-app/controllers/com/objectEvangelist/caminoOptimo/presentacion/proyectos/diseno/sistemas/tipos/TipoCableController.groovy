@@ -15,10 +15,7 @@ class TipoCableController {
 	def tipoCableFactory
 	
     def index = {
-        //redirect(action: "list", params: params)
-		
-				
-		render (view:'index', model:[members:TipoCable.list()])
+        redirect(action: "list", params: params)
     }
 
     def list = {
