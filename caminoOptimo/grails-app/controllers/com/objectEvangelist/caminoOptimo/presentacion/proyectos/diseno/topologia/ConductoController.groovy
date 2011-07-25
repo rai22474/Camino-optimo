@@ -30,8 +30,7 @@ class ConductoController {
 
 	
     def create = {
-        println 'aqui'
-		
+     	
 		def conductoInstance = new Conducto()
         conductoInstance.properties = params
 		
@@ -43,17 +42,14 @@ class ConductoController {
     }
 
     def save = {
-		println 'antes de salvar'
-        def conductoInstance = conductoFactory.creaConducto(params,
+	     def conductoInstance = conductoFactory.creaConducto(params,
 			                                                session.getAttribute('identificadorProyecto'))
-		println 'salvo'
 		if (conductoInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'conducto.label', default: 'Conducto'), conductoInstance.id])}"
             redirect(action: "show", id: conductoInstance.id)
         }
         else {
-			println 'Evidentemente por aqui'
-            render(view: "create", model: [conductoInstance: conductoInstance])
+	       render(view: "create", model: [conductoInstance: conductoInstance])
         }
     }
 
