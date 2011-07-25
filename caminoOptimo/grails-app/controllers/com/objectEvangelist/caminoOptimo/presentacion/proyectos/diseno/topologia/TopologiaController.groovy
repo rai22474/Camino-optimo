@@ -2,6 +2,7 @@ package com.objectEvangelist.caminoOptimo.presentacion.proyectos.diseno.topologi
 
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.*;
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.*
+import com.objectEvangelist.caminoOptimo.modelo.proyectos.*
 
 /**
  * Clase encargarda de llevar el flujo del diseño de proyecto.
@@ -24,8 +25,13 @@ class TopologiaController {
     }
 	 
 	
-	def topologia = {	
-		[canalizaciones: CanalizacionCompuesta.list(),tiposRed:TipoRed.list(),equipos:Equipo.list()]		
+	def topologia = {
+		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
+		def tiposRed = proyecto.getDiseno().getTiposRed()
+		def equipos = Equipo.findAllByDiseno(proyecto.getDiseno()) 
+		def canalizaciones = CanalizacionCompuesta.findAllByDiseno(proyecto.getDiseno())
+				
+		[canalizaciones:canalizaciones, tiposRed:tiposRed, equipos:equipos]		
 	} 
 	
 	/**

@@ -16,6 +16,30 @@ class CanalizacionCompuesta extends Canalizacion {
     static constraints = {
     }
 			
+	/**
+	* El tipo de canal.
+	*/
+   TipoCanal tipoCanal
+   
+   /**
+	* El tipo de red que va a llevar este canal.
+	*/
+   TipoRed red
+	   
+   /**
+	* La ubicacion de ese canal.
+	*/
+   String ubicacion
+   
+   /**
+	* La longitud total del canal.
+	*/
+   BigDecimal longitud
+	  
+   /**
+	* El diseño al que pertenece este equipo.
+	*/
+   Diseno diseno
 	
 	/**
 	* Cuando se agrega un cable a una bandeja se agrega a todas las secciones.
@@ -47,28 +71,5 @@ class CanalizacionCompuesta extends Canalizacion {
 		return llenadoCanalizacion
 	}
 	
-	/**
-	* El tipo de canal.
-	*/
-   TipoCanal tipoCanal
-   
-   /**
-	* El tipo de red que va a llevar este canal.
-	*/
-   TipoRed red
-	   
-   /**
-	* La ubicacion de ese canal.
-	*/
-   String ubicacion
-   
-   /**
-	* La longitud total del canal.
-	*/
-   BigDecimal longitud
-      
-   /**
-	* El dise�o al que pertenece este equipo.
-	*/
-   Diseno diseno
+	
 }

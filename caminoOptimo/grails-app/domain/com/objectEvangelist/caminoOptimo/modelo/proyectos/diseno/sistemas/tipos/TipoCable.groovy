@@ -2,6 +2,7 @@ package com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos
 
 
 import java.io.Serializable;
+import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.*
 
 /**
  * Los tipos de cables que van a usarse dentro de este proyecto.
@@ -54,6 +55,10 @@ class TipoCable implements Serializable {
      */
     BigDecimal seccionConductor
 
+	/**
+	 * Diseno al que pertenece este tipo de cable
+	 */
+	Diseno diseno
 	/**
 	* 	@see java.lang.Object#toString()
 	*/

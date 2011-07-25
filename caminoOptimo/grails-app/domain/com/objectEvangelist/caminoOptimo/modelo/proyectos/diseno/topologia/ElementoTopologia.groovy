@@ -18,6 +18,39 @@ class ElementoTopologia implements Serializable{
 		descripcion(nullable: true)
     }
 	
+	
+	/**
+	* La referencia del equipo.
+	*/
+   String referencia
+   
+   /**
+   * Descripcion del canal.
+   */
+   String descripcion
+   
+																											
+	/**
+	 * Los elementos de topologia con los que estoy conectado y los que estan conectados conmigo.
+	 */
+	List padres
+	List hijos
+	static mappedBy = [padres:'hijo',
+					   hijos:'padre',
+					   cables:'elementosTopologia']
+	
+	static hasMany = [hijos:Conexion,
+					  padres:Conexion,
+					  cables:Cable]
+	
+	
+	static belongsTo = [Cable,Conexion]
+
+	
+	/**
+	 * La lista de cables que estan asociadas a ese elemento de topologia.
+	 */
+	Set cables = []
 
 	/**
 	 * @see java.lang.Object#toString()
@@ -144,7 +177,7 @@ class ElementoTopologia implements Serializable{
     }   
    
 	/**
-	 * Método que agrega un cable
+	 * Metodo que agrega un cable
 	 */
 	def public agregaCable(Cable cable){
 		cables.add(cable)
@@ -169,7 +202,7 @@ class ElementoTopologia implements Serializable{
 	}
 	
 	/**
-	 * Método que elimina un cable de un tipo de conexion.
+	 * Metodo que elimina un cable
 	 */
 	def public eliminaCable(cable){
 		cables.remove(cable)
@@ -224,38 +257,7 @@ class ElementoTopologia implements Serializable{
 		return false
 	}
 			
-	/**
-	* La referencia del equipo.
-	*/
-   String referencia
-   
-   /**
-   * Descripcion del canal.
-   */
-   String descripcion
-   
-																											
-	/**
-	 * Los elementos de topologia con los que estoy conectado y los que estan conectados conmigo.
-	 */
-	List padres
-	List hijos
-	static mappedBy = [padres:'hijo',
-	                   hijos:'padre',
-					   cables:'elementosTopologia']
-	
-	static hasMany = [hijos:Conexion,
-	                  padres:Conexion,
-					  cables:Cable]
-	
-	
-	static belongsTo = [Cable,Conexion]
 
-	
-	/**
-	 * La lista de cables que estan asociadas a ese elemento de topologia.
-	 */
-	Set cables = []
 	
 	
 	/**

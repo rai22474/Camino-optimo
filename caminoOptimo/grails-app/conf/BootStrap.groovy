@@ -15,6 +15,7 @@ import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.*
 class BootStrap {
 
 	def springSecurityService
+	def proyecto
 	
     def init = { servletContext ->
 		def rolAdministracion = new Rol(authority: 'ROLE_ADMIN').save(flush: true)
@@ -26,21 +27,21 @@ class BootStrap {
 		
 		UsuarioRol.create usuarioTest, rolAdministracion, true
 				
-		def proyecto = creaProyecto()
+		proyecto = creaProyecto()
 		
 		def tipoCable = creaTipoCable()
 		def redes = crearTipoRedes()
-		def equipos = creaEquipo(proyecto.getDiseno())
+		def equipos = creaEquipo()
 		
 		def sistema = creaSistema(redes[0])
 		
 		creaCable(tipoCable,redes[0],sistema,equipos[0],equipos[3])
 		
-		def tipoBandeja = creaTipoBandeja(proyecto.getDiseno())		 
+		def tipoBandeja = creaTipoBandeja()		 
 		def bandejas = creaBandejas(tipoBandeja,redes,proyecto.getId())
 		
 		
-		def tipoConducto = creaTipoConducto(proyecto.getDiseno())
+		def tipoConducto = creaTipoConducto()
 		def conductos = creaConductos(tipoConducto,redes,proyecto.getId())			
 		
 		creaTopologia(bandejas,conductos,equipos)
@@ -84,7 +85,8 @@ class BootStrap {
 		numeroPuntas:3,
 		seccionConductor:1,
 		numeroCables:2,
-		enabled:true)
+		enabled:true,
+		diseno:proyecto.getDiseno())
 		
 		salvaEntidad(tipoCable)
 		
@@ -95,7 +97,8 @@ class BootStrap {
 			numeroPuntas:2,
 			seccionConductor:1,
 			numeroCables:3,
-			enabled:true)
+			enabled:true,
+			diseno:proyecto.getDiseno())
 			
 			salvaEntidad(tipoCable2)
 	
@@ -109,30 +112,30 @@ class BootStrap {
 		
 		def redes = []
 		def instrumentacion = new TipoRed(referencia:"Y",
-			descripcion:"Tipo de red de instrumentacion")
+			descripcion:"Tipo de red de instrumentacion",diseno:proyecto.getDiseno())
 				
 		salvaEntidad(instrumentacion)
 		redes.add(instrumentacion)
 		def control = new TipoRed(referencia:"C",
-			descripcion:"Tipo de red de control")
+			descripcion:"Tipo de red de control",diseno:proyecto.getDiseno())
 				
 		salvaEntidad(control)
 
 		redes.add(control)
 		def media = new TipoRed(referencia:"M",
-			descripcion:"Tipo de red de media")
+			descripcion:"Tipo de red de media",diseno:proyecto.getDiseno())
 				
 		salvaEntidad(media)
 
 		redes.add(media)
 		def baja = new TipoRed(referencia:"B",
-			descripcion:"Tipo de red de baja")
+			descripcion:"Tipo de red de baja",diseno:proyecto.getDiseno())
 				
 		salvaEntidad(baja)
 
 		redes.add(baja)
 		def alta = new TipoRed(referencia:"A",
-			descripcion:"Tipo de red de alta")
+			descripcion:"Tipo de red de alta",diseno:proyecto.getDiseno())
 				
 		salvaEntidad(alta)
 		redes.add(alta)
@@ -143,13 +146,13 @@ class BootStrap {
 	/**
 	 * Crea un nuevo equipo
 	 */
-	private def creaEquipo(diseno){
+	private def creaEquipo(){
 		def equipos = []
 		(0..3).each{i->
 			def equipo = new Equipo(referencia:"EQ-00"+ i,
 				descripcion:"El equipo que mola",
 				ubicacion:"Al norte",
-				diseno:diseno)
+				diseno:proyecto.getDiseno())
 			salvaEntidad(equipo)
 			equipos.add(equipo)
 		}
@@ -164,7 +167,8 @@ class BootStrap {
 		def sistema = new Sistema(referencia:"SIS-001",
 			nombre:"Nombre del sistema",
 			descripcion:"Un sistema que mola",
-			red:red)
+			red:red,
+			diseno:proyecto.getDiseno())
 		salvaEntidad(sistema)
 		return sistema
 	}
@@ -186,13 +190,13 @@ class BootStrap {
 	/**
 	 * Crea un tipo de bandeja.
 	 */
-	private def creaTipoBandeja(diseno){
+	private def creaTipoBandeja(){
 		def tipoBandeja = new TipoBandeja(referencia:"CA-001",
 			descripcion:"bandeja muy bonita",
 			peso:10,
 			ancho:10,
 			alto:10,
-			diseno:diseno);
+			diseno:proyecto.getDiseno());
 		salvaEntidad(tipoBandeja)
 		return tipoBandeja
 	}
@@ -200,12 +204,12 @@ class BootStrap {
 	/**
 	 * Crea un tipo de bandeja.
 	 */
-	private def creaTipoConducto(diseno){
+	private def creaTipoConducto(){
 		def tipoConducto = new TipoConducto(referencia:"GA-001",
 			diametroInterior:10,
 			diametroNominal:10,
 			descripcion:'Descripcion',
-			diseno:diseno)
+			diseno:proyecto.getDiseno())
 		salvaEntidad(tipoConducto)
 		return tipoConducto
 	}

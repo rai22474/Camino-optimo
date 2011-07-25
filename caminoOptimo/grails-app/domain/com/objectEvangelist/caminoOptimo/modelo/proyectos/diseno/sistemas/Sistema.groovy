@@ -2,6 +2,8 @@ package com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas
 
 import java.io.Serializable;
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.*;
+import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.*
+
 
 /**
  * Clase que representa un sistema. Un sistema es un conjunto de cables que representa una utilidad práctica por
@@ -39,6 +41,11 @@ class Sistema implements Serializable {
 	 * El tipo de red que pertenece el sistema.
 	 */
 	TipoRed red	
+	
+	/**
+	 * El diseño al que pertence este sistema.
+	 */
+	Diseno diseno
 	
 	/**
 	* 	@see java.lang.Object#toString()

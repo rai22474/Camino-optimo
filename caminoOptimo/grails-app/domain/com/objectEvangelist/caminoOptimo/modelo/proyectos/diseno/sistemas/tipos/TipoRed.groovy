@@ -1,7 +1,7 @@
 package com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos
 
 import java.io.Serializable;
-
+import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.*
 
 /**
  * Clase que define los diferentes tipos de redes que vamos a tener.
@@ -21,6 +21,11 @@ class TipoRed implements Serializable{
 	* La descripción del tipo de red.
 	*/
    String descripcion
+   
+   /**
+    * El diseño al que pertenece este tipo de red
+    */
+   Diseno diseno
 	
 	/**
 	 * 	@see java.lang.Object#toString()
