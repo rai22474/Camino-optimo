@@ -24,7 +24,7 @@
                 <g:renderErrors bean="${conductoInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form action="create" method="post" >
+            <g:form action="save" method="post" >
                 <div class="dialog">
                     <div>
                         <div>
@@ -41,7 +41,7 @@
                                     <label for="red"><g:message code="conducto.red.label" default="Red" /></label>
                                 </div>
                                 <div  class="value ${hasErrors(bean: conductoInstance, field: 'red', 'errors')}">
-                                    <g:select name="red.id" from="${com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.TipoRed.list()}" optionKey="id" value="${conductoInstance?.red?.id}"  />
+                                    <g:select name="red.id" from="${tiposRed}" optionKey="id" value="${conductoInstance?.red?.id}"  />
                                 </div>
                             </div>
                         
@@ -77,7 +77,7 @@
                                     <label for="tipoCanal"><g:message code="conducto.tipoCanal.label" default="Tipo Canal" /></label>
                                 </div>
                                 <div  class="value ${hasErrors(bean: conductoInstance, field: 'tipoCanal', 'errors')}">
-                                    <g:select name="tipoCanal.id" from="${com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.tipos.TipoCanal.list()}" optionKey="id" value="${conductoInstance?.tipoCanal?.id}"  />
+                                    <g:select name="tipoCanal.id" from="${tiposConducto}" optionKey="id" value="${conductoInstance?.tipoCanal?.id}"  />
                                 </div>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                     <div class="clearBoth"></div>
                 </div>
                 <div class="buttons">
-                    <span class="button"><g:submitButton name="save" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
+                    <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
                 </div>
             </g:form>
         </div>

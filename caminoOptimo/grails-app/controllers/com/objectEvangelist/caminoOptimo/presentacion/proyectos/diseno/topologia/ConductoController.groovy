@@ -4,6 +4,7 @@ package com.objectEvangelist.caminoOptimo.presentacion.proyectos.diseno.topologi
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.*;
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.Proyecto
 
+import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.tipos.TipoConducto;
 
 class ConductoController {
 
@@ -24,25 +25,34 @@ class ConductoController {
 		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
 		def conductoInstanceList = Conducto.findAllByDiseno(proyecto.getDiseno())
 			
-        [conductoInstanceList: conductoInstanceList, conductoInstanceTotal: Conducto.count()]
+        [conductoInstanceList: conductoInstanceList, conductoInstanceTotal: conductoInstanceList.size()]
     }
 
 	
     def create = {
-        def conductoInstance = new Conducto()
+        println 'aqui'
+		
+		def conductoInstance = new Conducto()
         conductoInstance.properties = params
-        return [conductoInstance: conductoInstance]
+		
+		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
+		def tiposRed = proyecto.getDiseno().getTiposRed()
+		def tiposConducto = TipoConducto.findAllByDiseno(proyecto.getDiseno())
+			
+        return [conductoInstance: conductoInstance,tiposRed:tiposRed,tiposConducto:tiposConducto]
     }
 
     def save = {
+		println 'antes de salvar'
         def conductoInstance = conductoFactory.creaConducto(params,
 			                                                session.getAttribute('identificadorProyecto'))
-		
+		println 'salvo'
 		if (conductoInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'conducto.label', default: 'Conducto'), conductoInstance.id])}"
             redirect(action: "show", id: conductoInstance.id)
         }
         else {
+			println 'Evidentemente por aqui'
             render(view: "create", model: [conductoInstance: conductoInstance])
         }
     }
@@ -65,7 +75,11 @@ class ConductoController {
             redirect(action: "list")
         }
         else {
-            return [conductoInstance: conductoInstance]
+			def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))			
+			def tiposRed = proyecto.getDiseno().getTiposRed()
+			def tiposConducto = TipoConducto.findAllByDiseno(proyecto.getDiseno())
+		
+			return [conductoInstance: conductoInstance,tiposRed:tiposRed,tiposConducto:tiposConducto]
         }
     }
 

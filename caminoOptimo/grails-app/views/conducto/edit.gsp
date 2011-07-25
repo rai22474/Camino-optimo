@@ -45,7 +45,7 @@
                                   <label for="red"><g:message code="conducto.red.label" default="Red" /></label>
                                 </div>
                                 <div  class="value ${hasErrors(bean: conductoInstance, field: 'red', 'errors')}">
-                                    <g:select name="red.id" from="${com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.TipoRed.list()}" optionKey="id" value="${conductoInstance?.red?.id}"  />
+                                    <g:select name="red.id" from="${tiposRed}" optionKey="id" value="${conductoInstance?.red?.id}"  />
                                 </div>
                             </div>
                         
@@ -81,7 +81,7 @@
                                   <label for="tipoCanal"><g:message code="conducto.tipoCanal.label" default="Tipo Canal" /></label>
                                 </div>
                                 <div  class="value ${hasErrors(bean: conductoInstance, field: 'tipoCanal', 'errors')}">
-                                    <g:select name="tipoCanal.id" from="${com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.tipos.TipoCanal.list()}" optionKey="id" value="${conductoInstance?.tipoCanal?.id}"  />
+                                    <g:select name="tipoCanal.id" from="${tiposConducto}" optionKey="id" value="${conductoInstance?.tipoCanal?.id}"  />
                                 </div>
                             </div>
                         
