@@ -46,7 +46,7 @@
                                   <label for="tipoCable"><g:message code="cable.tipoCable.label" default="Tipo Cable" /></label>
                                 </div>
                                 <div   class="value ${hasErrors(bean: cableInstance, field: 'tipoCable', 'errors')}">
-                                    <g:select name="tipoCable.id" from="${com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.TipoCable.list()}" optionKey="id" value="${cableInstance?.tipoCable?.id}"  />
+                                    <g:select name="tipoCable.id" from="${tiposCable}" optionKey="id" value="${cableInstance?.tipoCable?.id}"  />
                                 </div>
                             </div>
                         
@@ -55,7 +55,7 @@
                                   <label for="red"><g:message code="cable.red.label" default="Red" /></label>
                                 </div>
                                 <div   class="value ${hasErrors(bean: cableInstance, field: 'red', 'errors')}">
-                                    <g:select name="red.id" from="${com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.TipoRed.list()}" optionKey="id" value="${cableInstance?.red?.id}"  />
+                                    <g:select name="red.id" from="${tiposRed}" optionKey="id" value="${cableInstance?.red?.id}"  />
                                 </div>
                             </div>
                         
@@ -64,7 +64,7 @@
                                   <label for="sistema"><g:message code="cable.sistema.label" default="Sistema" /></label>
                                 </div>
                                 <div   class="value ${hasErrors(bean: cableInstance, field: 'sistema', 'errors')}">
-                                    <g:select name="sistema.id" from="${com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.Sistema.list()}" optionKey="id" value="${cableInstance?.sistema?.id}"  />
+                                    <g:select name="sistema.id" from="${sistemas}" optionKey="id" value="${cableInstance?.sistema?.id}"  />
                                 </div>
                             </div>
                         
@@ -73,7 +73,7 @@
                                   <label for="equipoOrigen"><g:message code="cable.equipoOrigen.label" default="Equipo Origen" /></label>
                                 </div>
                                 <div   class="value ${hasErrors(bean: cableInstance, field: 'equipoOrigen', 'errors')}">
-                                    <g:select name="equipoOrigen.id" from="${com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.Equipo.list()}" optionKey="id" value="${cableInstance?.equipoOrigen?.id}"  />
+                                    <g:select name="equipoOrigen.id" from="${equipos}" optionKey="id" value="${cableInstance?.equipoOrigen?.id}"  />
                                 </div>
                             </div>
                         
@@ -82,7 +82,7 @@
                                   <label for="equipoDestino"><g:message code="cable.equipoDestino.label" default="Equipo Destino" /></label>
                                 </div>
                                 <div   class="value ${hasErrors(bean: cableInstance, field: 'equipoDestino', 'errors')}">
-                                    <g:select name="equipoDestino.id" from="${com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.Equipo.list()}" optionKey="id" value="${cableInstance?.equipoDestino?.id}"  />
+                                    <g:select name="equipoDestino.id" from="${equipos}" optionKey="id" value="${cableInstance?.equipoDestino?.id}"  />
                                 </div>
                             </div>
                         

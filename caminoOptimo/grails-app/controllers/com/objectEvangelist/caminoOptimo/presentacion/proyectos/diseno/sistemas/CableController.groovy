@@ -3,7 +3,9 @@ package com.objectEvangelist.caminoOptimo.presentacion.proyectos.diseno.sistemas
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.*
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.*
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.Proyecto
-
+import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.TipoCable
+import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.TipoRed
+import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.Equipo
 
 class CableController {
 
@@ -25,9 +27,27 @@ class CableController {
 
     def create = {
         def cableInstance = new Cable()
-        cableInstance.properties = params		
-	    return [cableInstance: cableInstance]
+        cableInstance.properties = params
+		
+		recuperaParametrosEdicionCable(session, cableInstance)
     }
+
+	/**
+	 * Recupera los paraemtros para la edicion de un cable
+	 */
+	private def recuperaParametrosEdicionCable(javax.servlet.http.HttpSession session, Cable cableInstance) {
+		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
+		def tiposCable = TipoCable.findAllByDiseno(proyecto.getDiseno())
+		def tiposRed = TipoRed.findAllByDiseno(proyecto.getDiseno())
+		def sistemas = Sistema.findAllByDiseno(proyecto.getDiseno())
+		def equipos = Equipo.findAllByDiseno(proyecto.getDiseno())
+
+		return [cableInstance: cableInstance,
+			tiposCable:tiposCable,
+			tiposRed:tiposRed,
+			sistemas:sistemas,
+			equipos:equipos]
+	}
 
     def save = {
         def cableInstance = new Cable(params)
@@ -58,8 +78,8 @@ class CableController {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'cable.label', default: 'Cable'), params.id])}"
             redirect(action: "list")
         }
-        else {
-            return [cableInstance: cableInstance]
+        else {			
+            recuperaParametrosEdicionCable(session, cableInstance)
         }
     }
 
