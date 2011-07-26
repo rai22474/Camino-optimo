@@ -2,6 +2,8 @@ package com.objectEvangelist.caminoOptimo.presentacion.proyectos.diseno.sistemas
 
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.*
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.*
+import com.objectEvangelist.caminoOptimo.modelo.proyectos.Proyecto
+
 
 class CableController {
 
@@ -13,7 +15,12 @@ class CableController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [cableInstanceList: Cable.list(params), cableInstanceTotal: Cable.count()]
+		
+		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
+		def sistemas = Sistema.findAllByDiseno(proyecto.getDiseno())
+		
+        [cableInstanceList: Cable.findAllBySistemaInList(sistemas,params),
+			cableInstanceTotal:(sistemas.size() != 0?Cable.countBySistemaInList(sistemas):0)]
     }
 
     def create = {

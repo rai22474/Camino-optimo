@@ -21,9 +21,9 @@ class TipoBandejaController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 		
 		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
-		def tipoBandejaInstanceList = TipoBandeja.findAllByDiseno(proyecto.getDiseno())
+		def tipoBandejaInstanceList = TipoBandeja.findAllByDiseno(proyecto.getDiseno(),params)
 			
-	    [tipoBandejaInstanceList: tipoBandejaInstanceList, tipoBandejaInstanceTotal: tipoBandejaInstanceList.size()]
+	    [tipoBandejaInstanceList: tipoBandejaInstanceList, tipoBandejaInstanceTotal: TipoBandeja.countByDiseno(proyecto.getDiseno())]
     }
 
     def create = {

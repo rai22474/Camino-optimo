@@ -23,9 +23,9 @@ class ConductoController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 		
 		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
-		def conductoInstanceList = Conducto.findAllByDiseno(proyecto.getDiseno())
+		def conductoInstanceList = Conducto.findAllByDiseno(proyecto.getDiseno(),params)
 			
-        [conductoInstanceList: conductoInstanceList, conductoInstanceTotal: conductoInstanceList.size()]
+        [conductoInstanceList: conductoInstanceList, conductoInstanceTotal: Conducto.countByDiseno(proyecto.getDiseno())]
     }
 
 	

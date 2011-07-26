@@ -22,9 +22,9 @@ class TipoCableController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         
 		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
-		def tipoCableInstanceList = proyecto.getDiseno().getTiposCable()
+		def tipoCableInstanceList = TipoCable.findAllByDiseno(proyecto.getDiseno(),params)
 		
-		[tipoCableInstanceList:tipoCableInstanceList, tipoCableInstanceTotal: tipoCableInstanceList.size()]
+		[tipoCableInstanceList:tipoCableInstanceList, tipoCableInstanceTotal:TipoCable.countByDiseno(proyecto.getDiseno())]
     }
 
     def create = {

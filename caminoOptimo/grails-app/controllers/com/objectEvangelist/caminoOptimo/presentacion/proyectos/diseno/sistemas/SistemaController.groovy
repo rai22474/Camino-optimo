@@ -20,9 +20,9 @@ class SistemaController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
        
 		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
-		def sistemaInstanceList = proyecto.getDiseno().getSistemas()
+		def sistemaInstanceList = Sistema.findAllByDiseno(proyecto.getDiseno(),params)
 		
-		[sistemaInstanceList: sistemaInstanceList, sistemaInstanceTotal: sistemaInstanceList.size()]
+		[sistemaInstanceList: sistemaInstanceList, sistemaInstanceTotal: Sistema.countByDiseno(proyecto.getDiseno())]
     }
 
     def create = {

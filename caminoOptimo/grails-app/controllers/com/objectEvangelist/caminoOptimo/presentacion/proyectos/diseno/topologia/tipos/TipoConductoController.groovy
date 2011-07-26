@@ -20,9 +20,9 @@ class TipoConductoController {
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
-		def tipoConductoInstanceList = TipoConducto.findAllByDiseno(proyecto.getDiseno())
+		def tipoConductoInstanceList = TipoConducto.findAllByDiseno(proyecto.getDiseno(),params)
 				
-		[tipoConductoInstanceList: tipoConductoInstanceList, tipoConductoInstanceTotal: tipoConductoInstanceList.size()]
+		[tipoConductoInstanceList: tipoConductoInstanceList, tipoConductoInstanceTotal: TipoConducto.countByDiseno(proyecto.getDiseno())]
     }
 
     def create = {

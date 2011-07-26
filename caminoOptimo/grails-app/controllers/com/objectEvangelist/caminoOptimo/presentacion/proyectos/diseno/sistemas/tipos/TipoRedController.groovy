@@ -24,9 +24,9 @@ class TipoRedController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)		
 		
 		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))				
-		def tipoRedInstanceList = proyecto.getDiseno().getTiposRed()
+		def tipoRedInstanceList = TipoRed.findAllByDiseno(proyecto.getDiseno(),params)
 		
-        [tipoRedInstanceList:tipoRedInstanceList , tipoRedInstanceTotal: tipoRedInstanceList.size()]
+        [tipoRedInstanceList:tipoRedInstanceList , tipoRedInstanceTotal: TipoRed.countByDiseno(proyecto.getDiseno())]
     }
 
     def create = {

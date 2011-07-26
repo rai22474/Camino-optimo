@@ -23,9 +23,9 @@ class EquipoController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 		
 		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))		
-		def equipoInstanceList = Equipo.findAllByDiseno(proyecto.getDiseno()) 
+		def equipoInstanceList = Equipo.findAllByDiseno(proyecto.getDiseno(),params) 
 							
-        [equipoInstanceList: equipoInstanceList, equipoInstanceTotal: equipoInstanceList.size()]
+        [equipoInstanceList: equipoInstanceList, equipoInstanceTotal: Equipo.countByDiseno(proyecto.getDiseno())]
     }
 
     def create = {
