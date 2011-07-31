@@ -1,8 +1,10 @@
 package com.objectEvangelist.caminoOptimo.presentacion.proyectos.diseno.topologia
 
-import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.*;
+import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.*
+
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.*
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.*
+import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.tipos.*
 
 /**
  * Clase encargarda de llevar el flujo del diseño de proyecto.
@@ -11,12 +13,12 @@ import com.objectEvangelist.caminoOptimo.modelo.proyectos.*
 class TopologiaController {
 
 	/**
-	* Factoria de conductos.
+	 * Factoria de conductos.
 	*/
     def conductoFactory
 	
 	/**
-	* Factoria de bandeja.
+	 * Factoria de bandeja.
 	*/
 	def bandejaFactory
 	
@@ -27,7 +29,8 @@ class TopologiaController {
 	
 	def topologia = {
 		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
-		def tiposRed = proyecto.getDiseno().getTiposRed()
+		
+		def tiposRed = TipoRed.findAllByDiseno(proyecto.getDiseno())
 		def equipos = Equipo.findAllByDiseno(proyecto.getDiseno()) 
 		def canalizaciones = CanalizacionCompuesta.findAllByDiseno(proyecto.getDiseno())
 				
@@ -38,11 +41,13 @@ class TopologiaController {
 	 * Flujo para editar topologia.
 	 */
 	def editarTopologia = {	
-		def elementoTopologia = ElementoTopologia.get(params.idElementoTopologia)
 		
-		def (listaBandejas, listaConductos) = recuperarCanalizaciones(elementoTopologia)
+		def elementoTopologia = ElementoTopologia.get(params.idElementoTopologia)
+		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
+				
+		def (listaBandejas, listaConductos) = recuperarCanalizaciones(elementoTopologia,proyecto.getDiseno())
 		[elementoTopologia: elementoTopologia,
-		 equipos:Equipo.list(),
+		 equipos:Equipo.findAllByDiseno(proyecto.getDiseno()),
 		 bandejas:listaBandejas,
 		 conductos:listaConductos]
 	}
@@ -73,17 +78,7 @@ class TopologiaController {
 	   }
    }
    
-	/**
-	 * Crea una nueva bandeja.
-	 */
-	def creaBandeja ={
-		def bandejaInstance = new Bandeja()
-        bandejaInstance.properties = params
-	    [bandejaInstance:bandejaInstance,
-	 	 idElementoTopologia:params.idElementoTopologia]
-
-	}
-
+	
 	/**
 	 * Accion que sirve para conectar dos elementos de topologia.
 	 */
@@ -97,7 +92,26 @@ class TopologiaController {
    def conectarEquipo = {
 	   conectar(params.elementoOriginal, params.equipoConectar)
    }
-	/**
+	
+   /**
+   * Crea una nueva bandeja.
+   */
+   def creaBandeja ={
+	  def bandejaInstance = new Bandeja()
+	  bandejaInstance.properties = params
+	  
+	  def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
+	  	  
+	  def tiposRed = TipoRed.findAllByDiseno(proyecto.getDiseno())
+	  def tiposBandeja = TipoBandeja.findAllByDiseno(proyecto.getDiseno())
+	  
+	  [bandejaInstance:bandejaInstance,
+		tiposRed:tiposRed,
+		tiposBandeja:tiposBandeja,  
+		idElementoTopologia:params.idElementoTopologia]
+   }
+  
+   /**
 	 * Metodo que conecta dos elementos de topologia
 	 */
 	def conectar(elementoId, elementoConectarId){
@@ -131,7 +145,16 @@ class TopologiaController {
 	def creaConducto = {
 		def conductoInstance = new Conducto()
         conductoInstance.properties = params
+		
+		def proyecto = Proyecto.get(session.getAttribute('identificadorProyecto'))
+		
+		def tiposRed = TipoRed.findAllByDiseno(proyecto.getDiseno())
+		def tiposConducto = TipoConducto.findAllByDiseno(proyecto.getDiseno())
+		
+		
 	    [conductoInstance:conductoInstance,
+		 tiposRed:tiposRed,
+		 tiposConducto:tiposConducto,	
 	 	 idElementoTopologia:params.idElementoTopologia]
 	}
 	
@@ -163,13 +186,13 @@ class TopologiaController {
 	/**
 	 * Metodo que va a devolver la lista de bandejas y conductos.
 	 */
-	private def recuperarCanalizaciones(elementoTopologia){		
+	private def recuperarCanalizaciones(elementoTopologia,diseno){		
 		if (!elementoTopologia.obtenerTipoElementoTopologia().equals(TipoElementoTopologia.EQUIPO)){
 			def tipoRed = elementoTopologia.red			
-			[Bandeja.findAllByRed(tipoRed),Conducto.findAllByRed(tipoRed)]
+			[Bandeja.findAllByRedAndDiseno(tipoRed,diseno),Conducto.findAllByRedAndDiseno(tipoRed,diseno)]
 		}
 		else{
-			[Bandeja.list(),Conducto.list()]
+			[Bandeja.findAllByDiseno(diseno),Conducto.findAllByDiseno(diseno)]
 		}
 	}
 }

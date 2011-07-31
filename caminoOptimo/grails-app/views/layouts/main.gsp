@@ -11,12 +11,7 @@
         <g:javascript library="jquery" plugin="jquery" />
   	    <g:javascript library="jquery.tools.min" />
   	   	
-  	   	<script type="text/javascript" charset="utf-8"> 
-			$(document).ready(function() {
-				$("ul.tabs").tabs("div.topologia > div");	
-			}		 		    
-		</script> 	
-  	   </head>
+   	   </head>
     <body>
     	
         <div class="cabecera">

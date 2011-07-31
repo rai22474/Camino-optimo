@@ -3,7 +3,13 @@
 <html>
 <head>
 	<title>Diseño proyecto</title>
+	<script type="text/javascript" charset="utf-8"> 
+		$(document).ready(function() {
+			$("ul.tabs").tabs("div.topologia > div");	
+		}		 		    
+	</script> 	
 	<meta name="layout" content="main"/>
+	
 </head>
 	<body>
 		<div class="nav">

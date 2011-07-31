@@ -93,8 +93,7 @@
                                 <div   class="value ${hasErrors(bean: cableInstance, field: 'descripcion', 'errors')}">
                                     <g:textArea name="descripcion" value="${cableInstance?.descripcion}" />
                                 </div>
-                            </div>                    
-                        
+                            </div>                                            
                         </div>
                     </div>
                     <div class="clearBoth"></div>
