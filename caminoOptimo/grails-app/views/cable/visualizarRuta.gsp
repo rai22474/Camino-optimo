@@ -1,7 +1,9 @@
+<%@page import="com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.TipoElementoTopologia"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@ page import="com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.Cable" %>
 <%@ page import="com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.TipoConexion" %>
+<%@ page import="com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.TipoElementoTopologia" %>
 
 <html>
     <head>
@@ -35,6 +37,12 @@
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                             <td>${fieldValue(bean: segmento, field: "referencia")}</td>
                             <td>${fieldValue(bean: segmento, field: "descripcion")}</td>
+                            <g:if test="${segmento.obtenerTipoElementoTopologia() != TipoElementoTopologia.EQUIPO}">
+                            	<td>${segmento.calculaPorcentajeSeccionOcupada()}</td>
+                            </g:if> 
+                            <g:else>
+                            	<td></td>
+                            </g:else>                            
                         </tr>
                     </g:each>
                     </tbody>

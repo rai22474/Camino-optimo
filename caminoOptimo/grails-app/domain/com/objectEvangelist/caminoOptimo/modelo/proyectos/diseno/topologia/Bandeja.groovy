@@ -8,14 +8,11 @@ import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.Cable;
  */
 class Bandeja extends CanalizacionCompuesta{
 
-    static constraints = {
-    }
-		
-	/**
+   /**
 	 * 	@see java.lang.Object#toString()
 	 */
 	@Override
-	public def String toString(){
+	def String toString(){
 		return "$referencia"
 	}
 	
@@ -27,9 +24,10 @@ class Bandeja extends CanalizacionCompuesta{
 	}
 		
 	/**
-	* El porcentaje de llenado de una bandeja sera el maximo llenado de cada una de las secciones.
-	*/
-   def public getPorcentajeLlenado() {
-	   return 0
-   }  
+	 * @see com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.Canalizacion#calculaSeccionUtil()
+	 */
+	@Override
+	def calculaSeccionUtil() {
+		tipoCanal.getAncho()
+	}
 }

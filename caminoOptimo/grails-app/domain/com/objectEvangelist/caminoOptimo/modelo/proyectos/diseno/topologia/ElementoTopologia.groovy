@@ -11,47 +11,7 @@ import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.*
  *
  */
 class ElementoTopologia implements Serializable{
-
-
-	static constraints = {
-		referencia(nullable:true)
-		descripcion(nullable: true)
-    }
 	
-	
-	/**
-	* La referencia del equipo.
-	*/
-   String referencia
-   
-   /**
-   * Descripcion del canal.
-   */
-   String descripcion
-   
-																											
-	/**
-	 * Los elementos de topologia con los que estoy conectado y los que estan conectados conmigo.
-	 */
-	List padres
-	List hijos
-	static mappedBy = [padres:'hijo',
-					   hijos:'padre',
-					   cables:'elementosTopologia']
-	
-	static hasMany = [hijos:Conexion,
-					  padres:Conexion,
-					  cables:Cable]
-	
-	
-	static belongsTo = [Cable,Conexion]
-
-	
-	/**
-	 * La lista de cables que estan asociadas a ese elemento de topologia.
-	 */
-	Set cables = []
-
 	/**
 	 * @see java.lang.Object#toString()
 	 */
@@ -83,7 +43,7 @@ class ElementoTopologia implements Serializable{
 	/**
 	 * Devuelve aquellos elementos con los que estoy conectado.
 	 */
-	public recuperaHijos(){		
+	def recuperaHijos(){		
 		def hijos = [] 
 		
 		getHijos().each {conexion-> 
@@ -96,7 +56,7 @@ class ElementoTopologia implements Serializable{
 	/**
 	 * Devuelve aquellos elementos con los que estoy conectado.
 	 */
-	public recuperaHijos(tipoConexion){		
+	def recuperaHijos(tipoConexion){		
 		def hijos = [] 		
 		getHijos().each {conexion-> 
 			if (conexion.getTipoConexion().equals(tipoConexion)){
@@ -110,7 +70,7 @@ class ElementoTopologia implements Serializable{
 	/** 
 	 * Devuelve aquellos elementos que estan conectado conmigo.
 	 */
-	public recuperaPadres(){
+	def recuperaPadres(){
 		def padres = []
 		getPadres().each {conexion->
 			padres.add(conexion.getPadre())	
@@ -122,7 +82,7 @@ class ElementoTopologia implements Serializable{
 	/**
 	 * Devuelve aquellos elemento conectados conmigo por tipo
 	 */
-	public recuperaPadres(tipoConexion){
+	def recuperaPadres(tipoConexion){
 		def padres = []
 		getPadres().each {conexion->
 			if (conexion.getTipoConexion().equals(tipoConexion)){
@@ -136,7 +96,7 @@ class ElementoTopologia implements Serializable{
 	/**
 	 * Metodo que sirve para conectar un elemento con otro.
 	 */
-	public conecta(elementoHijo, tipoConexion){
+	def conecta(elementoHijo, tipoConexion){
 		def conexion = new Conexion(tipoConexion: tipoConexion)
 		addToHijos(conexion);
 		elementoHijo.addToPadres(conexion)
@@ -148,14 +108,14 @@ class ElementoTopologia implements Serializable{
 	/**
 	 * Recupera los elemento relacionados con el actual por tipo de conexion.
 	 */
-	public recuperaElementoRelacionados(tipoConexion){
+	def recuperaElementoRelacionados(tipoConexion){
 		return recuperaHijos(tipoConexion) + recuperaPadres(tipoConexion)
 	}
 	
 	/**
 	 * Calcula todas las rutas posibles de un elemento.
 	 */
-	public calculaRutasPosibles(){			
+	def calculaRutasPosibles(){			
 		return this.calculaRutas(new Ruta(referencia:referencia))	
 	}	
 	
@@ -180,14 +140,20 @@ class ElementoTopologia implements Serializable{
 	 * Metodo que agrega un cable
 	 */
 	def public agregaCable(Cable cable){
+		println referencia + ' ' + cable.equipoDestino + ' ' + cable.equipoOrigen
 		cables.add(cable)
+		
+		println "El cable salvado " + cables.size()
 	}
+	
 	
 	/**
 	 * Agrega a cables a los hijo de un tipo.
 	 */
 	def protected agregaCableHijos(Cable cable,TipoConexion tipoConexion){
+				
 		recuperaHijos(tipoConexion).each {hijo->
+			println "agrego el cable al hijo " + hijo
 			hijo.agregaCable(cable)
 		}
 	}
@@ -204,7 +170,7 @@ class ElementoTopologia implements Serializable{
 	/**
 	 * Metodo que elimina un cable
 	 */
-	def public eliminaCable(cable){
+	def eliminaCable(cable){
 		cables.remove(cable)
 	}
 	
@@ -256,14 +222,46 @@ class ElementoTopologia implements Serializable{
 	def esElementoTopologiaFinal(){
 		return false
 	}
-			
-
-	
 	
 	/**
 	 * Devuelve el tipo de topologia que tiene esta clase. 
 	 */
 	TipoElementoTopologia obtenerTipoElementoTopologia(){}
 	
+	static constraints = {
+		referencia(nullable:true)
+		descripcion(nullable: true)
+	}
 	
+	/**
+	* La referencia del equipo.
+	*/
+   String referencia
+   
+   /**
+   * Descripcion del canal.
+   */
+   String descripcion
+																											
+	/**
+	 * Los elementos de topologia con los que estoy conectado y los que estan conectados conmigo.
+	 */
+	List padres
+	List hijos
+	static mappedBy = [padres:'hijo',
+					   hijos:'padre',
+					   cables:'elementosTopologia']
+	
+	static hasMany = [hijos:Conexion,
+					  padres:Conexion,
+					  cables:Cable]
+	
+	
+	static belongsTo = [Cable,Conexion]
+	
+	/**
+	 * La lista de cables que estan asociadas a ese elemento de topologia.
+	 */
+	Set cables
+
 }

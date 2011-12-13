@@ -45,7 +45,7 @@ class CanalizacionCompuestaTests extends GrailsUnitTestCase {
    }
    
   /**
-   * Metodo que calcula el llenado de la  
+   * Metodo que calcula el llenado de la seccion ocupada.
    */
    void testCalculaSeccionOcupada(){
 	   

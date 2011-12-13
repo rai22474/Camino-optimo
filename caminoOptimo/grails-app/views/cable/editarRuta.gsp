@@ -77,8 +77,8 @@
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                             <td><g:link  action="visualizarRuta" params="[numeroRuta:i,identificadorCable:cableInstance.id]">${ruta.recuperaHijos(TipoConexion.RUTA)}</g:link></td>
                             <td>${fieldValue(bean: ruta, field: "distancia")}</td>
-                            <td>${fieldValue(bean: ruta, field: "porcentajeLlenado")}</td>
-                        </tr>
+                            <td>${ruta.calculaPorcentajeSeccionOcupada()}</td>
+                         </tr>
                     </g:each>
                     </tbody>
                 </table>

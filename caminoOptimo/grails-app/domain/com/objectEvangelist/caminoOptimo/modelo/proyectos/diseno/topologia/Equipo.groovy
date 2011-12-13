@@ -44,7 +44,7 @@ class Equipo extends ElementoTopologia{
 	String ubicacion
 	
 	/**
-	 * El diseï¿½o al que pertenece este equipo.
+	 * El diseño al que pertenece este equipo.
 	 */
 	Diseno diseno
 }

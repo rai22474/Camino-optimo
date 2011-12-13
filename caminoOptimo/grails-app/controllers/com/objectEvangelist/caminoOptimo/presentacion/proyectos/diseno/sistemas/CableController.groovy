@@ -149,7 +149,10 @@ class CableController {
 		int posicion = new Integer(params.numeroRuta)
 		
 		cableInstance.modificaRuta(rutasPosibles[posicion])
-		cableInstance.save()			
+		cableInstance.save()
+		
+		rutasPosibles[posicion].save()
+		println "El porcentaje despues de añadir el cable -->" +rutasPosibles[posicion].calculaPorcentajeSeccionOcupada()
 		redirect(action: "show", id: params.id)
 	}
 	

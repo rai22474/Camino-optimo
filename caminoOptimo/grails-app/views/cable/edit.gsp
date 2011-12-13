@@ -90,7 +90,7 @@
                                 <div   class="name">
                                   <label for="descripcion"><g:message code="cable.descripcion.label" default="Descripcion" /></label>
                                 </div>
-                                <div   class="value ${hasErrors(bean: cableInstance, field: 'descripcion', 'errors')}">
+                                <div class="value ${hasErrors(bean: cableInstance, field: 'descripcion', 'errors')}">
                                     <g:textArea name="descripcion" value="${cableInstance?.descripcion}" />
                                 </div>
                             </div>                                            

@@ -11,7 +11,7 @@ class Ruta extends ElementoTopologia{
 	/**
 	 * Devuelve el tipo de topologia que tiene esta clase.
 	 */
-	TipoElementoTopologia obtenerTipoElementoTopologia(){
+	def TipoElementoTopologia obtenerTipoElementoTopologia(){
 		TipoElementoTopologia.RUTA
 	}
 			
@@ -60,31 +60,40 @@ class Ruta extends ElementoTopologia{
 	/**
 	 * Cuando se agrega un cable a una bandeja se agrega a todas las secciones.
 	 */
-	def public agregaCable(Cable cable){
+	def agregaCable(Cable cable){
+		println 'Entro a agregar el cable ' + cable
 		agregaCableHijos (cable, TipoConexion.RUTA)
 	}
 	
 	/**
 	 * Cuando se agrega un cable a una bandeja se elemina a todas sus secciones.
 	 */
-	def public eliminaCable(cable){
+	def eliminaCable(cable){
 		eliminaCableHijos(cable,TipoConexion.RUTA)
 	}
 		
+	/**
+	 * Devuelve el porcentaje de llenad de la ruta que es el máximo de sus elementos.
+	 */
+	def calculaPorcentajeSeccionOcupada(){
+		def llenadoCanalizacion = 0
+		
+		recuperaHijos(TipoConexion.RUTA).each {componente->
+			if (componente.obtenerTipoElementoTopologia() != TipoElementoTopologia.EQUIPO){
+				def llenado = componente.calculaSeccionOcupada()
+				if (llenado > llenadoCanalizacion){
+					llenadoCanalizacion = llenado
+				}
+			}
+		}
+		
+		return llenadoCanalizacion
+	}
+	
 	/**
 	 * La distancia que recorre que tiene esa ruta.
 	 */
 	def getDistancia(){
 		return 0
-	}
-	
-	/**
-	 * Devuelve el porcentaje de llenado de la ruta. Es el porcentaje de llenado del
-	 * segmento que mas lleno esta.
-	 */
-	def getPorcentajeLlenado(){
-		return 0
-	}
-	
-	
+	}	
 }

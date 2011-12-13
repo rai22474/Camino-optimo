@@ -83,7 +83,7 @@
                         <tr class="odd">
                             <td>${cableInstance.ruta?.recuperaHijos(TipoConexion.RUTA)}</td>
                             <td>${fieldValue(cableInstance.ruta?.distancia)}</td>
-                            <td>${fieldValue(cableInstance.ruta?.porcentajeLlenado)}</td>
+                            <td>${cableInstance.ruta?.calculaPorcentajeSeccionOcupada()}</td>
                         </tr>
                     </tbody>
                 </table>
