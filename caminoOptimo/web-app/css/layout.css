@@ -1,0 +1,34 @@
+body {  
+    margin: 0 auto;  
+    width: 940px;
+   
+}
+
+footer {
+    border-top: 1px solid #8A93D3;
+    clear: both;
+    font-size: 10px;
+    margin-top: 50px;
+    text-align: center;
+    width: 940px;
+}
+
+header nav{
+	position: absolute;
+	top:10px;
+	width: 100%;
+}
+
+header nav ul {  
+    margin: 0 auto;  
+    list-style: none;  
+}
+
+nav.userMenu ul li a {  
+    display: block;  
+    font-size: 12px;  
+    line-height: 44px;  
+    text-align: center;  
+    text-decoration: none;  
+    color: navy;  
+}

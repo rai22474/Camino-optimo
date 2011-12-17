@@ -5,9 +5,11 @@ table {
     width: 100%;
     margin-top: 10px;
 }
+
 tr {
     border: 0;
 }
+
 td, th {
     font: 11px verdana, arial, helvetica, sans-serif;
     line-height: 12px;
@@ -15,6 +17,7 @@ td, th {
     text-align: left;
     vertical-align: top;
 }
+
 th {
      color: #666;
     font-size: 11px;
@@ -22,6 +25,7 @@ th {
     line-height: 17px;
     padding: 2px 6px;
 }
+
 th a:link, th a:visited, th a:hover {
     color: #333;
     display: block;
@@ -29,6 +33,7 @@ th a:link, th a:visited, th a:hover {
     text-decoration: none;
     width: 100%;
 }
+
 th.asc a, th.desc a {
     background-position: right;
     background-repeat: no-repeat;
@@ -43,10 +48,24 @@ th.desc a {
 .odd {
     background: #f7f7f7;
 }
+
 .even {
     background: #fff;
 }
 
-tr.seleccionado{
-	background: #b2d1ff;
+nav.singleElementActions{
+	float: left;
+}
+
+nav.noElementActions{
+	float: right;
+	margin-left: 650px;
+}
+
+nav.noElementActions a{
+	  font: 11px verdana,arial,helvetica,sans-serif;
+}
+
+div.tableActions{
+	display: inline-block;
 }

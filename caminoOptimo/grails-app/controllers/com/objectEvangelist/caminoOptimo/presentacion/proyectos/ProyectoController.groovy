@@ -2,6 +2,7 @@ package com.objectEvangelist.caminoOptimo.presentacion.proyectos
 
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.*
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.TipoCable
+import com.objectEvangelist.caminoOptimo.presentacion.crud.SingleEntityManagementController;
 
 import grails.plugins.springsecurity.*
 
@@ -9,115 +10,54 @@ import grails.plugins.springsecurity.*
  * Controlador de proyectos.
  */
 @Secured(['ROLE_ADMIN'])
-class ProyectoController {
+class ProyectoController extends SingleEntityManagementController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-	
-	
-    def index = {
-        redirect(action: "list", params: params)
-    }
+	/**
+	 * Returns the entity class name.
+	 * @return the string with the name of the entity.
+	 */
+	def protected String getEntityName(){
+		return "proyecto"
+	}
 
-    def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [proyectoInstanceList: Proyecto.list(params), proyectoInstanceTotal: Proyecto.count()]
-    }
+	/**
+	 * Return the class entity.
+	 * @return The class for entity.
+	 */
+	def protected getEntityClass(){
+		return Proyecto
+	}
 
-    def create = {
-        def proyectoInstance = new Proyecto()
-        proyectoInstance.properties = params
-        return [proyectoInstance: proyectoInstance]
-    }
+	/**
+	 * Create a new instance of this entity.
+	 * @return the new instance.
+	 */
+	def protected createEntityInstance(){
+		return new Proyecto()
+	}
 
-    def save = {
-        def proyectoInstance = new Proyecto(params)
-        if (proyectoInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'proyecto.label', default: 'Proyecto'), proyectoInstance.id])}"
-            redirect(action: "show", id: proyectoInstance.id)
-        }
-        else {
-            render(view: "create", model: [proyectoInstance: proyectoInstance])
-        }
-    }
+	/**
+	 * Create a entity instance with parameters.
+	 * @param params the parameters of the entity.
+	 * @return the new instance.
+	 */
+	def protected createEntityInstance(params){
+		return new Proyecto(params)
+	}
 
-    def show = {
-        def proyectoInstance = Proyecto.get(params.id)
-        if (!proyectoInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'proyecto.label', default: 'Proyecto'), params.id])}"
-            redirect(action: "list")
-        }
-        else {
-            [proyectoInstance: proyectoInstance]
-        }
-    }
 
-    def edit = {
-        def proyectoInstance = Proyecto.get(params.id)
-        if (!proyectoInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'proyecto.label', default: 'Proyecto'), params.id])}"
-            redirect(action: "list")
-        }
-        else {
-            return [proyectoInstance: proyectoInstance]
-        }
-    }
-	
-    def disenoProyecto = {
-        def proyectoInstance = Proyecto.get(params.id)
-        if (!proyectoInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'proyecto.label', default: 'Proyecto'), params.id])}"
-            redirect(action: "list")
-        }
-        else {
-			session.putAt('identificadorProyecto' ,params.id)
-            render(view: "/diseno/disenoProyecto", model: [proyectoInstance: proyectoInstance]);		
-        }
-    }
-
-    def update = {
-        def proyectoInstance = Proyecto.get(params.id)
-        if (proyectoInstance) {
-            if (params.version) {
-                def version = params.version.toLong()
-                if (proyectoInstance.version > version) {
-                    
-                    proyectoInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'proyecto.label', default: 'Proyecto')] as Object[], "Another user has updated this Proyecto while you were editing")
-                    render(view: "edit", model: [proyectoInstance: proyectoInstance])
-                    return
-                }
-            }
-            proyectoInstance.properties = params
-            if (!proyectoInstance.hasErrors() && proyectoInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'proyecto.label', default: 'Proyecto'), proyectoInstance.id])}"
-                redirect(action: "show", id: proyectoInstance.id)
-            }
-            else {
-                render(view: "edit", model: [proyectoInstance: proyectoInstance])
-            }
-        }
-        else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'proyecto.label', default: 'Proyecto'), params.id])}"
-            redirect(action: "list")
-        }
-    }
-
-    def delete = {
-        def proyectoInstance = Proyecto.get(params.id)
-        if (proyectoInstance) {
-            try {
-                proyectoInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'proyecto.label', default: 'Proyecto'), params.id])}"
-                redirect(action: "list")
-            }
-            catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'proyecto.label', default: 'Proyecto'), params.id])}"
-                redirect(action: "show", id: params.id)
-            }
-        }
-        else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'proyecto.label', default: 'Proyecto'), params.id])}"
-            redirect(action: "list")
-        }
-    }
-	
+	/**
+	 * The design of the project.
+	 */
+	def disenoProyecto = {
+		def proyectoInstance = Proyecto.get(params.id)
+		if (!proyectoInstance) {
+			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'proyecto.label', default: 'Proyecto'), params.id])}"
+			redirect(action: "list")
+		}
+		else {
+			session.putAt('identificadorProyecto',params.id)
+			render(view: "/diseno/disenoProyecto", model: [proyectoInstance: proyectoInstance]);
+		}
+	}
 }

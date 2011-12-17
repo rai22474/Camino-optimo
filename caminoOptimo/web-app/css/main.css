@@ -5,17 +5,6 @@ html * {
 
 /* GENERAL */
 
-.spinner {
-    padding: 5px;
-    position: absolute;
-    right: 0;
-}
-
-
-#grailsLogo {
-	padding:0px;
-}
-
 a:link, a:visited {
     color: #330066;
     font-weight: bold;
@@ -37,9 +26,11 @@ input, select, textarea {
     margin: 2px 0;
     padding: 2px 4px;
 }
+
 select {
    padding: 2px 2px 2px 0;
 }
+
 textarea {
 	width: 250px;
 	height: 150px;
@@ -50,19 +41,6 @@ input:focus, select:focus, textarea:focus {
     border: 1px solid #b2d1ff;
 }
 
-.body {   
-    margin-left: 20px ;
-  
-}
-
-.pie{
-	clear:both;
-	border: 1px solid #8A93D3;
-	margin-top: 50px;
-	margin-left: 10px ;
-	width: 1020px; 
-		
-}
 
 /* NAVIGATION MENU */
 
@@ -165,15 +143,15 @@ td.errors input {
     padding: 5px 0;
 }
 
-.prop {
+.property {
     padding: 5px;
 }
-.prop .name {
+.property .name {
     display: inline-block;
     width: 200px;
     color:#081472;
 }
-.prop .value {
+.property .value {
     text-align: left;
     width: 60%;
 }
@@ -402,7 +380,7 @@ div.clearBoth{
 	clear:both;
 }
 
-div.prop div{
+div.property div{
 	float: left;
 }
 

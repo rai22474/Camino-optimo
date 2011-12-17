@@ -18,7 +18,8 @@
 	        <div id="spinner" class="spinner" style="display:none;">
 	            <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner" />
 	        </div>
-	        <div id="caminoOptimoLogo" class="logo"><a href="#"><img src="${resource(dir:'images',file:'caminoOptimoLogo.png')}" alt="CaminoOptimo" border="0" /></a></div>
+	        <div id="caminoOptimoLogo" class="logo"><a href="#">
+	        	<img src="${resource(dir:'images',file:'caminoOptimoLogo.png')}" alt="CaminoOptimo" border="0" /></a></div>
 			<g:link controller="logout">Cerrar sesión</g:link>	
 	    </div>
 	    <div class="cuerpo">
