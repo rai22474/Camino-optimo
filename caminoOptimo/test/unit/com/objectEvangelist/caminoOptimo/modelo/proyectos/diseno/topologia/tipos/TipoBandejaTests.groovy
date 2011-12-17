@@ -97,12 +97,10 @@ class TipoBandejaTests extends GrailsUnitTestCase {
 	   def tipoBandejaIgual = new TipoBandeja(referencia:"referencia")
 	   def tipoBandejaDistinto = new TipoBandeja(referencia:"referenciaDistinta")
 	   def objetoDistinto = new Object()
-	   
-	   
+	   	   
 	   new EqualsTester(tipoBandejaOriginal,
 		   tipoBandejaIgual,
 		   tipoBandejaDistinto,
 		   objetoDistinto)
-	   
    }
 }

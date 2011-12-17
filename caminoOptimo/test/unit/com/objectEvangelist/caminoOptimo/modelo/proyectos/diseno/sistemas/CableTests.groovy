@@ -5,8 +5,7 @@ import com.gargoylesoftware.base.testing.EqualsTester
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.*
 
 class CableTests extends GrailsUnitTestCase {
-    
-	
+    	
 	/**
 	 * Metodo que prueba que la referencia de un cable no es nula.
 	 */
@@ -34,7 +33,6 @@ class CableTests extends GrailsUnitTestCase {
 		assertEquals 'Debe dar un error de cable',"blank", cable.errors["referencia"]    
 	}
 	
-	
 	/**
 	 * El tipo de cable no puede ser nulo.
 	 */
@@ -46,7 +44,6 @@ class CableTests extends GrailsUnitTestCase {
 
 		assertFalse 'El tipo del cable no puede ser nula ', cable.validate()
 		assertEquals 'Debe dar un error de cable',"nullable", cable.errors["tipoCable"]  
-		
 	}
 	
 	/**
@@ -97,8 +94,6 @@ class CableTests extends GrailsUnitTestCase {
 		assertFalse 'La sistema no puede ser nula ', cable.validate()
 		assertEquals 'Debe dar un error de cable',"nullable", cable.errors["equipoDestino"]  
 	}
-	
-	
 	
 	 /**
      * Prueba el metodo toString

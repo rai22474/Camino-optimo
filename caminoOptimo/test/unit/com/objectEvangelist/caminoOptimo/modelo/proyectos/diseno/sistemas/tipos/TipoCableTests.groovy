@@ -1,9 +1,9 @@
 package com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos
 
-
-import com.gargoylesoftware.base.testing.EqualsTester;
+import com.gargoylesoftware.base.testing.EqualsTester
 
 import grails.test.*
+
 
 /**
  * Clase de pruebas para el tipo de cable.

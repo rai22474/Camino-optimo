@@ -1,32 +1,16 @@
 package com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos
 
-import java.io.Serializable;
+import java.io.Serializable
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.*
+import groovy.transform.EqualsAndHashCode
 
 /**
  * Clase que define los diferentes tipos de redes que vamos a tener.
  *
  */
+@EqualsAndHashCode(includes="referencia")
 class TipoRed implements Serializable{
 
-    static constraints = {
-    }
-	
-	/**
-	* Referencia de cada uno de los tipo de red.
-	*/
-   String referencia
-   
-   /**
-	* La descripción del tipo de red.
-	*/
-   String descripcion
-   
-   /**
-    * El diseño al que pertenece este tipo de red
-    */
-   Diseno diseno
-	
 	/**
 	 * 	@see java.lang.Object#toString()
 	 */
@@ -34,40 +18,19 @@ class TipoRed implements Serializable{
 	def String toString(){
 		"$referencia"
 	}
-	
+
 	/**
-	 * @see java.lang.Object#hashCode()
+	 * Referencia de cada uno de los tipo de red.
 	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31
-		def result = 1
-		return prime * result	+ ((referencia == null) ? 0 : referencia.hashCode())
-	}
+	String referencia
 
-	/** 
-	 *  @see java.lang.Object#equals(java.lang.Object)
+	/**
+	 * La descripción del tipo de red.
 	 */
-	@Override
-	public boolean equals(Object obj) {
-		
-		if (obj == null) {
-			return false
-		}
-		
-		if (!(obj instanceof TipoRed)) {
-			return false
-		}
-		if (referencia == null) {
-			if (obj.referencia != null) {
-				return false
-			}
-		} else if (!referencia.equals(obj.referencia)) {
-			return false
-		}
-		
-		return true
-	}
+	String descripcion
 
-	
+	/**
+	 * El diseño al que pertenece este tipo de red
+	 */
+	Diseno diseno
 }

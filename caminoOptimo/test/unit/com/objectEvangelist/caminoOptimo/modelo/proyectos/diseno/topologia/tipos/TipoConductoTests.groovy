@@ -74,11 +74,9 @@ class TipoConductoTests extends GrailsUnitTestCase {
 	   def tipoConductoDistinto = new TipoConducto(referencia:"referenciaDistinta")
 	   def objetoDistinto = new Object()
 	   
-	   
 	   new EqualsTester(tipoConductoOriginal,
 		   tipoConductoIgual,
 		   tipoConductoDistinto,
 		   objetoDistinto)
-	   
    }
 }

@@ -1,5 +1,7 @@
 package com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas
 
+import groovy.transform.EqualsAndHashCode;
+
 import java.io.Serializable;
 
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.tipos.*
@@ -9,6 +11,7 @@ import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia.*
  * Cada uno de los cables que forma un sistema, da servicio a cada uno de los equipos.
  * 
  */
+@EqualsAndHashCode(includes="referencia")
 class Cable implements Serializable{
 	
 	static constraints = {
@@ -19,8 +22,6 @@ class Cable implements Serializable{
 		equipoOrigen(nullable:false)
 		ruta(nullable:true)
 	}
-		
-	
 	
 	/**
 	 * Metodo que modifica la ruta del cable con la nueva informacion de canalizaciones.
@@ -56,41 +57,7 @@ class Cable implements Serializable{
 	def String toString(){
 		"$referencia"
 	}
-	
-	/** 
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31
-		int result = 1
-		return prime * result
-				+ ((referencia == null) ? 0 : referencia.hashCode())
-	}
-
-	/**
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
 		
-		if (obj == null) {
-			return false
-		}
-		if (!(obj instanceof Cable)) {
-			return false
-		}
-	
-		if (referencia == null) {
-			if (obj.referencia != null) {
-				return false
-			}
-		} else if (!referencia.equals(obj.referencia)) {
-			return false
-		}
-		return true
-	}
-
 	/**
 	 * La referencia del cable.
 	 */
@@ -135,8 +102,7 @@ class Cable implements Serializable{
 	* Indica que el cable pertenece al sistema.
 	*/
    static belongsTo = [ sistema : Sistema]
-   
-	
+   	
 	/**
 	 * Elementos topologia
 	 */

@@ -9,7 +9,6 @@ import grails.test.*
  */
 class TipoCanalTests extends GrailsUnitTestCase {
    
-   
 	/**
      * Prueba el metodo toString
      */

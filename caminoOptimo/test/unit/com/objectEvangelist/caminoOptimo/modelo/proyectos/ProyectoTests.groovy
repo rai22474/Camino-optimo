@@ -15,7 +15,7 @@ class ProyectoTests extends GrailsUnitTestCase {
     /**
      * Prueba que un proyecto no puede tener un código nulo.
      */
-    public void testErrorCodigoNulo() {
+	public void testErrorCodigoNulo() {
     	def proyecto = new Proyecto(codigo:null,descripcion:"descripcion")
     	mockForConstraintsTests(Proyecto, [ proyecto ])
 
@@ -81,7 +81,6 @@ class ProyectoTests extends GrailsUnitTestCase {
 	 *  Testea el equals y el hascode de las clase.
 	 */
 	public void testEquals(){
-		
 		def proyectoOriginal = new Proyecto(codigo:'001',
 			descripcion:'La descripcion')
 		

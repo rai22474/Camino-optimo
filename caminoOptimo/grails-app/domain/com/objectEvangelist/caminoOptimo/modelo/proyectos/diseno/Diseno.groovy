@@ -12,9 +12,22 @@ import com.objectEvangelist.caminoOptimo.modelo.proyectos.*
  * El diseno es la definición de los elementos que forman el sistema de cableado.
  */
 class Diseno {
-
-    static constraints = {
-    }
+		
+	/**
+	 * Metodo que añade un nueva canalizacion al diseño.
+	 */
+	def agregaCanalizacion(canalizacion){
+		addToCanalizaciones(canalizacion)
+		canalizacion.setDiseno(this)
+	}
+		
+	/**
+	 * Metodo que a�ade un tipo de canal al dise�o.
+	 */
+	def agregaTipoCanal(tipoCanal){
+		addToTiposCanalizacion(tipoCanal)
+		tipoCanal.setDiseno(this)
+	}
 	
 	/**
 	 * Relaciones con los cables.
@@ -39,24 +52,5 @@ class Diseno {
 	/**
 	* El porcentaje maximo de llenado de los conductos
 	*/
-	BigDecimal porcentajeMaximoLlenadoConductos = 0
-   
-		
-	/**
-	 * Metodo que añade un nueva canalizacion al diseño.
-	 */
-	def agregaCanalizacion(canalizacion){
-		addToCanalizaciones(canalizacion)
-		canalizacion.setDiseno(this)
-	}
-	
-	
-	/**
-	 * Metodo que a�ade un tipo de canal al dise�o.
-	 */
-	def agregaTipoCanal(tipoCanal){
-		addToTiposCanalizacion(tipoCanal)
-		tipoCanal.setDiseno(this)
-	}
-
+	BigDecimal porcentajeMaximoLlenadoConductos = 0   
 }
