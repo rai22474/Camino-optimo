@@ -2,12 +2,10 @@ import org.grails.plugin.hibernate.filter.HibernateFilterDomainConfiguration
 
 
 dataSource {
-	pooled = true
-    driverClassName = "org.hsqldb.jdbcDriver"
+    pooled = true
+    driverClassName = "org.h2.Driver"
     username = "sa"
     password = ""
-	
-	configClass = HibernateFilterDomainConfiguration.class
 }
 
 hibernate {
@@ -17,22 +15,33 @@ hibernate {
 }
 // environment specific settings
 environments {
-	development {
-		dataSource {
-			dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-			url = "jdbc:hsqldb:mem:devDB"
-		}
-	}
-	test {
-		dataSource {
-			dbCreate = "update"
-			url = "jdbc:hsqldb:mem:testDb"
-		}
-	}
-	production {
-		dataSource {
-			dbCreate = "update"
-			url = "jdbc:hsqldb:file:prodDb;shutdown=true"
-		}
-	}
+    development {
+        dataSource {
+            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url = "jdbc:h2:mem:devDb;MVCC=TRUE"
+        }
+    }
+    test {
+        dataSource {
+            dbCreate = "update"
+            url = "jdbc:h2:mem:testDb;MVCC=TRUE"
+        }
+    }
+    production {
+        dataSource {
+            dbCreate = "update"
+            url = "jdbc:h2:prodDb;MVCC=TRUE"
+            pooled = true
+            properties {
+               maxActive = -1
+               minEvictableIdleTimeMillis=1800000
+               timeBetweenEvictionRunsMillis=1800000
+               numTestsPerEvictionRun=3
+               testOnBorrow=true
+               testWhileIdle=true
+               testOnReturn=true
+               validationQuery="SELECT 1"
+            }
+        }
+    }
 }

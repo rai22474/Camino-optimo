@@ -3,7 +3,7 @@
 <g:applyLayout name="mainLayout"> 	     
 	<article>
 	     <h1><g:message code="proyecto.edit" default="Edit User" /></h1>	  
-	     <g:applyLayout name=errorsLayout"/>
+	     <g:applyLayout name="errorsLayout"/>
 	     
 	     <g:form method="post" action="update">
 	         <g:hiddenField name="id" value="${entityInstance?.id}" />

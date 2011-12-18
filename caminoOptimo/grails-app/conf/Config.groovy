@@ -52,7 +52,7 @@ jquery {
 // set per-environment serverURL stem for creating absolute links
 environments {
     production {
-        grails.serverURL = "http://www.changeme.com"
+        grails.serverURL = "http://caminooptimo.cloudfoundry.com"
     }
     development {
         grails.serverURL = "http://localhost:8080/${appName}"
@@ -60,7 +60,6 @@ environments {
     test {
         grails.serverURL = "http://localhost:8080/${appName}"
     }
-
 }
 
 // log4j configuration
