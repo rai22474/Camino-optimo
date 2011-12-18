@@ -28,6 +28,4 @@ public enum TipoConexion implements Serializable{
 	 * Conexion de los elemento que forman una ruta
 	 */
 	RUTA,
-	
-	
 }

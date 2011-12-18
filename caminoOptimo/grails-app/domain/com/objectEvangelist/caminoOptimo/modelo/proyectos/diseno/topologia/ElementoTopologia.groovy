@@ -1,5 +1,7 @@
 package com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia
 
+import groovy.transform.EqualsAndHashCode;
+
 import java.io.Serializable;
 
 import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.Diseno;
@@ -10,6 +12,7 @@ import com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.sistemas.*
  * Cada uno de los elementos que forman la topologia.
  *
  */
+@EqualsAndHashCode
 class ElementoTopologia implements Serializable{
 	
 	/**
@@ -18,26 +21,6 @@ class ElementoTopologia implements Serializable{
 	@Override
 	public String toString() {
 		return "$referencia";
-	}
-											
-	/** 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	boolean equals(o) {
-    	if (this.is(o)) return true;	
-	    if (!o || getClass() != o.class) return false;
-	
-	    ElementoTopologia that = (ElementoTopologia) o;
-	
-	    if (referencia? !referencia.equals(that.referencia) : that.referencia!= null) return false;
-	    return true;
-    }
-
-    /**
-     * @see java.lang.Object#hashCode()
-     */
-    int hashCode() {
-	   return (referencia ? referencia.hashCode() : 0);	
 	}
 			
 	/**
@@ -263,5 +246,4 @@ class ElementoTopologia implements Serializable{
 	 * La lista de cables que estan asociadas a ese elemento de topologia.
 	 */
 	Set cables
-
 }

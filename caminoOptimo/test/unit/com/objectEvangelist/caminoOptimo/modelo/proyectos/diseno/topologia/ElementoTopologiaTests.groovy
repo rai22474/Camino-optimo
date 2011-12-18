@@ -120,7 +120,6 @@ class ElementoTopologiaTests extends GrailsUnitTestCase {
 		assertEquals 'El hijo no es el correcto',conexion.getHijo(),elementoTopologiaHijo
 	}
 	
-	
 	/**
 	 * Prueba que ocurre cuando no hay ninguna ruta vacia. No hay conexiones.
 	 */
@@ -459,7 +458,4 @@ class ElementoTopologiaTests extends GrailsUnitTestCase {
 		
 		return elementoTopologia
 	}
-	
-	
-	
 }

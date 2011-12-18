@@ -3,15 +3,15 @@ package com.objectEvangelist.caminoOptimo.modelo.proyectos.diseno.topologia
 import java.io.Serializable;
 
 /**
- * Conexion entre dos elementos de topologia
+ * Conexión entre dos elementos de topología.
  *
  */
 class Conexion implements Serializable{
 
-    static constraints = {
-    }
-	
-	@Override
+ 	/** 
+ 	 * @see java.lang.Object#toString()
+ 	 */
+ 	@Override
 	public String toString() {
     	return "$tipoConexion"
 	}
