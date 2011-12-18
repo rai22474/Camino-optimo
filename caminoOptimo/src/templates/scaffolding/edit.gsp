@@ -2,7 +2,7 @@
 <%=packageName%>
 <g:applyLayout name="mainLayout"> 	     
 	<article>
-	     <h1><g:message code="${domainClass.propertyName}.edit" default="Edit User" /></h1>	  
+	     <h1><g:message code="${domainClass.propertyName}.edit" default="Edit ${className}" /></h1>	  
 	     <g:applyLayout name=errorsLayout"/>
 	     
 	     <g:form method="post" action="update">

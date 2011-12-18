@@ -4,7 +4,7 @@
 	<article>
 	    <h1><g:message code="${domainClass.propertyName}.create" default="Create ${className}" /></h1>
 
-	   	<g:applyLayout name=errorsLayout"/>
+	   	<g:applyLayout name="errorsLayout"/>
 
 	    <g:form action="save" method="post" >	      	
 	        <g:applyLayout name="../${domainClass.propertyName}/form"/>    	
